@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compute the multi-processing from a workspace — compute • RJDemetra</title>
+<title>Compute a workspace multi-processing(s) — compute • RJDemetra</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,9 @@
 
 
 
-<meta property="og:title" content="Compute the multi-processing from a workspace — compute" />
-<meta property="og:description" content="Function to compute all the multi-processings or a given one from a workspace.
-By default the workspace only contains definitions: computation is needed to get the seasonal adjustment model
+<meta property="og:title" content="Compute a workspace multi-processing(s) — compute" />
+<meta property="og:description" content="Function to compute all the multi-processings or only a given one from a workspace.
+By default, the workspace only contains definitions: computation is needed to recalculate and access the adjusted model
 (with get_model)." />
 <meta property="og:image" content="/logo.svg" />
 
@@ -154,14 +154,14 @@ By default the workspace only contains definitions: computation is needed to get
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Compute the multi-processing from a workspace</h1>
+    <h1>Compute a workspace multi-processing(s)</h1>
     <small class="dont-index">Source: <a href='https://github.com/jdemetra/rjdemetra/blob/master/R/import_workspace.R'><code>R/import_workspace.R</code></a></small>
     <div class="hidden name"><code>compute.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Function to compute all the multi-processings or a given one from a workspace.
-By default the workspace only contains definitions: computation is needed to get the seasonal adjustment model
+    <p>Function to compute all the multi-processings or only a given one from a workspace.
+By default, the workspace only contains definitions: computation is needed to recalculate and access the adjusted model
 (with <code><a href='get_model.html'>get_model</a></code>).</p>
     </div>
 
@@ -177,7 +177,7 @@ By default the workspace only contains definitions: computation is needed to get
     <tr>
       <th>i</th>
       <td><p>a <code>character</code> or <code>numeric</code> indicating the name or the index of the multiprocessing to compute.
-By default all the multi-processings are compute.</p></td>
+By default, all multi-processings are computed.</p></td>
     </tr>
     </table>
 
@@ -196,8 +196,8 @@ By default all the multi-processings are compute.</p></td>
 <span class='va'>sa_item1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_object.html'>get_object</a></span><span class='op'>(</span><span class='va'>mp</span>, <span class='fl'>1</span><span class='op'>)</span>
 
 <span class='fu'><a href='get_model.html'>get_model</a></span><span class='op'>(</span><span class='va'>sa_item1</span>, <span class='va'>wk</span><span class='op'>)</span> <span class='co'># Returns NULL</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: The result of the object is NULL: have you compute the workspace importing?</span>
-#&gt; <span class='warning'>See ?compute for more information</span></div><div class='output co'>#&gt; NULL</div><div class='input'>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: The result of the object is NULL: have you computed the workspace after importing it?</span>
+#&gt; <span class='warning'>See ?compute for more information.</span></div><div class='output co'>#&gt; NULL</div><div class='input'>
 <span class='fu'>compute</span><span class='op'>(</span><span class='va'>wk</span><span class='op'>)</span>
 
 <span class='fu'><a href='get_model.html'>get_model</a></span><span class='op'>(</span><span class='va'>sa_item1</span>, <span class='va'>wk</span><span class='op'>)</span> <span class='co'># Returns the SA model sa_x13</span>

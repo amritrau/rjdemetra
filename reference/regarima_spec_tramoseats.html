@@ -47,7 +47,9 @@
 
 
 <meta property="og:title" content="RegARIMA model specification, pre-adjustment in TRAMO-SEATS — regarima_spec_tramoseats" />
-<meta property="og:description" content="Function to create (and/or modify) a c(&quot;regarima_spec&quot;,&quot;TRAMO_SEATS&quot;) class object with the RegARIMA model specification for the TRAMO-SEATS method. The object can be created from a predefined 'JDemetra+' model specification  (a character), a previous specification (c(&quot;regarima_spec&quot;,&quot;TRAMO_SEATS&quot;) object) or a TRAMO-SEATS RegARIMA model (c(&quot;regarima&quot;,&quot;TRAMO_SEATS&quot;))." />
+<meta property="og:description" content="Function to create (and/or modify) a c(&quot;regarima_spec&quot;,&quot;TRAMO_SEATS&quot;) class object with the RegARIMA model specification
+for the TRAMO-SEATS method. The object can be created from the name (character) of a predefined 'JDemetra+' model specification,
+a previous specification (c(&quot;regarima_spec&quot;,&quot;TRAMO_SEATS&quot;) object) or a TRAMO-SEATS RegARIMA model (c(&quot;regarima&quot;,&quot;TRAMO_SEATS&quot;))." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -158,7 +160,9 @@
     </div>
 
     <div class="ref-description">
-    <p>Function to create (and/or modify) a <code><a href='https://rdrr.io/r/base/c.html'>c("regarima_spec","TRAMO_SEATS")</a></code> class object with the RegARIMA model specification for the TRAMO-SEATS method. The object can be created from a predefined 'JDemetra+' model specification  (a <code>character</code>), a previous specification (<code><a href='https://rdrr.io/r/base/c.html'>c("regarima_spec","TRAMO_SEATS")</a></code> object) or a TRAMO-SEATS RegARIMA model (<code><a href='https://rdrr.io/r/base/c.html'>c("regarima","TRAMO_SEATS")</a></code>).</p>
+    <p>Function to create (and/or modify) a <code><a href='https://rdrr.io/r/base/c.html'>c("regarima_spec","TRAMO_SEATS")</a></code> class object with the RegARIMA model specification
+for the TRAMO-SEATS method. The object can be created from the name (<code>character</code>) of a predefined 'JDemetra+' model specification,
+a previous specification (<code><a href='https://rdrr.io/r/base/c.html'>c("regarima_spec","TRAMO_SEATS")</a></code> object) or a TRAMO-SEATS RegARIMA model (<code><a href='https://rdrr.io/r/base/c.html'>c("regarima","TRAMO_SEATS")</a></code>).</p>
     </div>
 
     <pre class="usage"><span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span>
@@ -235,107 +239,140 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>spec</th>
-      <td><p>model specification.  It can be a <code>character</code> of predefined 'JDemetra+' model specification (see <em>Details</em>), an object of class <code><a href='https://rdrr.io/r/base/c.html'>c("regarima_spec","TRAMO_SEATS")</a></code> or an object of class <code><a href='https://rdrr.io/r/base/c.html'>c("regarima", "TRAMO_SEATS")</a></code>. The default is <code>"TRfull"</code>.</p></td>
+      <td><p>the model specification. It can be the name (<code>character</code>) of a predefined 'JDemetra+' model specification
+(see <em>Details</em>), an object of class <code><a href='https://rdrr.io/r/base/c.html'>c("regarima_spec","TRAMO_SEATS")</a></code> or an object of class <code><a href='https://rdrr.io/r/base/c.html'>c("regarima", "TRAMO_SEATS")</a></code>.
+The default is <code>"TRfull"</code>.</p></td>
     </tr>
     <tr>
       <th>preliminary.check</th>
-      <td><p>boolean to check the quality of the input series and exclude highly problematic ones: e.g. these with a number of identical observations and/or missing values above pre-specified threshold values.</p>
+      <td><p>a <code>logical</code> to check the quality of the input series and exclude highly problematic series
+e.g. the series with a number of identical observations and/or missing values above pre-specified threshold values.</p>
 <p>The time span of the series to be used for the estimation of the RegArima model coefficients (default from 1900-01-01 to 2020-12-31) is controlled by the following six variables: <code>estimate.from, estimate.to, estimate.first, estimate.last, estimate.exclFirst</code> and <code>estimate.exclLast</code>; where <code>estimate.from</code> and <code>estimate.to</code> have priority over remaining span control variables, <code>estimate.last</code> and <code>estimate.first</code> have priority over <code>estimate.exclFirst</code> and <code>estimate.exclLast</code>, and <code>estimate.last</code> has priority over <code>estimate.first</code>.</p></td>
     </tr>
     <tr>
       <th>estimate.from</th>
-      <td><p>character in format "YYYY-MM-DD" indicating the start of the time span (e.g. "1900-01-01"). Can be combined with <code>estimate.to</code>.</p></td>
+      <td><p><code>character</code> in format "YYYY-MM-DD" indicating the start of the time span (e.g. "1900-01-01"). Can be combined with <code>estimate.to</code>.</p></td>
     </tr>
     <tr>
       <th>estimate.to</th>
-      <td><p>character in format "YYYY-MM-DD" indicating the end of the time span (e.g. "2020-12-31"). Can be combined with <code>estimate.from</code>.</p></td>
+      <td><p>a <code>character</code> in format "YYYY-MM-DD" indicating the end of the time span (e.g. "2020-12-31").
+It can be combined with the parameter <code>estimate.from</code>.</p></td>
     </tr>
     <tr>
       <th>estimate.first</th>
-      <td><p>numeric specifying the number of periods considered at the beginning of the series.</p></td>
+      <td><p><code>numeric</code>, the number of periods considered at the beginning of the series.</p></td>
     </tr>
     <tr>
       <th>estimate.last</th>
-      <td><p>numeric specifying the number of periods considered at the end of the series.</p></td>
+      <td><p><code>numeric</code>, the number of periods considered at the end of the series.</p></td>
     </tr>
     <tr>
       <th>estimate.exclFirst</th>
-      <td><p>numeric specifying the number of periods excluded at the beginning of the series. Can be combined with <code>estimate.exclLast</code>.</p></td>
+      <td><p><code>numeric</code>, the number of periods excluded at the beginning of the series.
+It can be combined with the parameter <code>estimate.exclLast</code>.</p></td>
     </tr>
     <tr>
       <th>estimate.exclLast</th>
-      <td><p>numeric specifying the number of periods excluded at the end of the series. Can be combined with <code>estimate.exclFirst</code>.</p></td>
+      <td><p><code>numeric</code>, the number of periods excluded at the end of the series.
+It can be combined with the parameter <code>estimate.exclFirst</code>.</p></td>
     </tr>
     <tr>
       <th>estimate.tol</th>
-      <td><p>numeric, convergence tolerance. The absolute changes in the log-likelihood function are compared to this value to check for the convergence of the estimation iterations.</p></td>
+      <td><p><code>numeric</code>, the convergence tolerance. The absolute changes in the log-likelihood function are compared to this value
+to check for the convergence of the estimation iterations.</p></td>
     </tr>
     <tr>
       <th>estimate.eml</th>
-      <td><p>logicals, exact maximum likelihood estimation. If <code>TRUE</code> the program performs an exact maximum likelihood estimation. If <code>FASLE</code> the Unconditional Least Squares method is used.</p></td>
+      <td><p><code>logical</code>, the exact maximum likelihood estimation. If <code>TRUE</code>, the program performs an exact maximum likelihood estimation.
+If <code>FASLE</code>, the Unconditional Least Squares method is used.</p></td>
     </tr>
     <tr>
       <th>estimate.urfinal</th>
-      <td><p>numeric, final unit root limit. The threshold value for the final unit root test for identification of differencing orders. If the magnitude of an AR root for the final model is less than this number, a unit root is assumed, the order of the AR polynomial is reduced by one, and the appropriate order of the differencing (non-seasonal, seasonal) is increased.</p></td>
+      <td><p><code>numeric</code>, the final unit root limit. The threshold value for the final unit root test
+for identification of differencing orders. If the magnitude of an AR root for the final model is smaller than this number,
+ then a unit root is assumed, the order of the AR polynomial is reduced by one and the appropriate order of the differencing
+ (non-seasonal, seasonal) is increased.</p></td>
     </tr>
     <tr>
       <th>transform.function</th>
-      <td><p>transformation of the input series: <code>"None"</code> - no transformation of the series; <code>"Log"</code> - takes the log of the series; <code>"Auto"</code> - the program tests for the log-level specification.</p></td>
+      <td><p>the transformation of the input series: <code>"None"</code> = no transformation of the series;
+<code>"Log"</code> = takes the log of the series; <code>"Auto"</code> = the program tests for the log-level specification.</p></td>
     </tr>
     <tr>
       <th>transform.fct</th>
-      <td><p>numeric controlling the bias in the log/level pre-test: <code> transform.fct </code>&gt; 1 favours levels, <code>transform.fct</code>&lt; 1 favours logs. Considered only when <code>transform.function</code> is set to <code>"Auto"</code>.</p>
-<p>Control variables for the pre-specified outliers. The pre-specified outliers are used in the model only if they are enabled (<code>usrdef.outliersEnabled=TRUE</code>) and the outliers' type (<code>usrdef.outliersType</code>) and date (<code>usrdef.outliersDate</code>) are provided.</p></td>
+      <td><p><code>numeric</code> controlling the bias in the log/level pre-test:
+<code> transform.fct </code>&gt; 1 favours levels, <code>transform.fct</code>&lt; 1 favours logs.
+Considered only when <code>transform.function</code> is set to <code>"Auto"</code>.</p>
+<p>Control variables for the pre-specified outliers. Said pre-specified outliers are used in the model only when  enabled
+(<code>usrdef.outliersEnabled=TRUE</code>) and when the outliers' type (<code>usrdef.outliersType</code>) and date (<code>usrdef.outliersDate</code>)
+are provided.</p></td>
     </tr>
     <tr>
       <th>usrdef.outliersEnabled</th>
-      <td><p>logicals. If <code>TRUE</code> the program uses the pre-specified outliers.</p></td>
+      <td><p><code>logical</code>. If <code>TRUE</code>, the program uses the pre-specified outliers.</p></td>
     </tr>
     <tr>
       <th>usrdef.outliersType</th>
-      <td><p>vector defining the outliers' type. Possible types are: <code>("AO"</code>) - additive, <code>("LS"</code>) - level shift, <code>("TC"</code>) - transitory change, <code>("SO"</code>) -  seasonal outlier. E.g.: <code> usrdef.outliersType =c("AO","AO","LS")</code>.</p></td>
+      <td><p>a vector defining the outliers' type. Possible types are: <code>("AO"</code>) = additive,
+<code>("LS"</code>) = level shift, <code>("TC"</code>) = transitory change, <code>("SO"</code>) = seasonal outlier.
+E.g.: <code> usrdef.outliersType= c("AO","AO","LS")</code>.</p></td>
     </tr>
     <tr>
       <th>usrdef.outliersDate</th>
-      <td><p>vector defining the outliers' date. The dates should be characters in format "YYYY-MM-DD". E.g.: <code>usrdef.outliersDate=c("2009-10-01","2005-02-01","2003-04-01")</code>.</p></td>
+      <td><p>a vector defining the outliers' date. The dates should be characters in format "YYYY-MM-DD".
+E.g.: <code>usrdef.outliersDate= c("2009-10-01","2005-02-01","2003-04-01")</code>.</p></td>
     </tr>
     <tr>
       <th>usrdef.outliersCoef</th>
-      <td><p>vector providing fixed coefficients for the outliers. The coefficients can't be fixed if  <code> transform.function</code> is set to <code>"Auto"</code> - the series transformation need to be pre-defined. E.g.: <code> usrdef.outliersCoef=c(200,170,20)</code>.</p>
+      <td><p>a vector providing fixed coefficients for the outliers. The coefficients can't be fixed if
+the parameter <code> transform.function</code> is set to <code>"Auto"</code> (i.e. if the series transformation needs to be pre-defined.)
+E.g.: <code>usrdef.outliersCoef= c(200,170,20)</code>.</p>
 <p>Control variables for the user-defined variables:</p></td>
     </tr>
     <tr>
       <th>usrdef.varEnabled</th>
-      <td><p>logicals. If <code>TRUE</code> the program uses the user-defined variables.</p></td>
+      <td><p><code>logical</code> If <code>TRUE</code>, the program uses the user-defined variables.</p></td>
     </tr>
     <tr>
       <th>usrdef.var</th>
-      <td><p>time series (<code>ts</code>) or matrix of time series (<code>mts</code>) with the user-defined variables.</p></td>
+      <td><p>a time series (<code>ts</code>) or a matrix of time series (<code>mts</code>) containing the user-defined variables.</p></td>
     </tr>
     <tr>
       <th>usrdef.varType</th>
-      <td><p>vector of character(s) defining the user-defined variables component type. Possible types are: <code>"Undefined", "Series", "Trend", "Seasonal", "SeasonallyAdjusted", "Irregular", "Calendar"</code>. The type <code>"Calendar"</code> has to be used with <code>tradingdays.option = "UserDefined"</code> to use user-defined calendar regressors. If not specified, the program will assign the <code>"Undefined"</code> type.</p></td>
+      <td><p>a vector of character(s) defining the user-defined variables component type.
+Possible types are: <code>"Undefined", "Series", "Trend", "Seasonal", "SeasonallyAdjusted", "Irregular", "Calendar"</code>.
+To use the user-defined calendar regressors, the type <code>"Calendar"</code> must be defined in conjunction with <code>tradingdays.option = "UserDefined"</code>.
+Otherwise, the program will automatically set <code>usrdef.varType = "Undefined"</code>.</p></td>
     </tr>
     <tr>
       <th>usrdef.varCoef</th>
-      <td><p>vector providing fixed coefficients for the user-defined variables. The coefficients can't be fixed if  <code> transform.function</code> is set to <code>"Auto"</code> - the series transformation need to be pre-defined.</p></td>
+      <td><p>a vector providing fixed coefficients for the user-defined variables. The coefficients can't be fixed if
+<code> transform.function</code> is set to <code>"Auto"</code> (i.e. if the series transformation needs to be pre-defined).</p></td>
     </tr>
     <tr>
       <th>tradingdays.mauto</th>
-      <td><p>defines whether the calendar effects should be added to the model manually (<code>"Unused"</code>) or automatically. In the automatic selection, the choice of the number of calendar variables can be based on the F-Test (<code>"FTest"</code>) or the Wald Test (<code>"WaldTest"</code>); the model with higher F value is chosen, provided that it is higher than <code>tradingdays.pftd</code>).</p></td>
+      <td><p>defines whether the calendar effects should be added to the model manually (<code>"Unused"</code>) or automatically.
+During the automatic selection, the choice of the number of calendar variables can be based on the F-Test (<code>"FTest"</code>) or the Wald Test (<code>"WaldTest"</code>);
+the model with higher F value is chosen, provided that it is higher than <code>tradingdays.pftd</code>).</p></td>
     </tr>
     <tr>
       <th>tradingdays.pftd</th>
-      <td><p>numeric. P-value applied in the test specified by the automatic parameter (<code>tradingdays.mauto</code>) to assess the significance of the pre-tested calendar effects variables and whether they should be included in the RegArima model.</p>
+      <td><p><code>numeric</code>. The p-value used in the test specified by the automatic parameter (<code>tradingdays.mauto</code>)
+to assess the significance of the pre-tested calendar effects variables and whether they should be included in the RegArima model.</p>
 <p>Control variables for the manual selection of calendar effects variables (<code>tradingdays.mauto</code> is set to <code>"Unused"</code>):</p></td>
     </tr>
     <tr>
       <th>tradingdays.option</th>
-      <td><p>defines the type of the trading days regression variables: <code>"TradingDays"</code> -  six day-of-the-week regression variables; <code>"WorkingDays"</code> - one working/non-working day contrast variable; <code>"None"</code> - no correction for trading days and working days effects; <code>"UserDefined"</code> - user-defined trading days regressors (regressors have to be defined by the <code>usrdef.var</code> argument with <code>usrdef.varType</code> set to <code>"Calendar"</code> and <code>usrdef.varEnabled = TRUE</code>). <code>"None"</code> has also to be chosen for the "day-of-week effects" correction (<code>tradingdays.stocktd</code> to be modified accordingly).</p></td>
+      <td><p>to choose the trading days regression variables: <code>"TradingDays"</code> =  six day-of-the-week regression variables;
+<code>"WorkingDays"</code> = one working/non-working day contrast variable; <code>"None"</code> = no correction for trading days and working days effects;
+<code>"UserDefined"</code> = user-defined trading days regressors (regressors must be defined by the <code>usrdef.var</code> argument
+with <code>usrdef.varType</code> set to <code>"Calendar"</code> and <code>usrdef.varEnabled = TRUE</code>).
+<code>"None"</code> must also be chosen for the "day-of-week effects" correction (and <code>tradingdays.stocktd</code> must be modified accordingly).</p></td>
     </tr>
     <tr>
       <th>tradingdays.leapyear</th>
-      <td><p>logicals. Specifies if the leap-year correction should be included. If <code>TRUE</code> the model includes the leap-year effect.</p></td>
+      <td><p><code>logical</code>. Specifies if the leap-year correction should be included.
+If <code>TRUE</code>, the model includes the leap-year effect.</p></td>
     </tr>
     <tr>
       <th>tradingdays.stocktd</th>
@@ -343,194 +380,255 @@
     </tr>
     <tr>
       <th>tradingdays.test</th>
-      <td><p>defines the pre-tests of the trading day effects: <code>"None"</code> - calendar variables are used in the model without pre-testing; <code>"Separate_T"</code> - a t-test is applied to each trading day variable separately and the trading day variables are included in the RegArima model if at least one t-statistic is greater than 2.6 or if two t-statistics are greater than 2.0 (in absolute terms); <code>"Joint_F"</code> - a joint F-test of significance of all the trading day variables. The trading day effect is significant if the F statistic is greater than 0.95.</p></td>
+      <td><p>defines the pre-tests of the trading day effects: <code>"None"</code> = calendar variables are used in the model without pre-testing;
+<code>"Separate_T"</code> = a t-test is applied to each trading day variable separately and the trading day variables are included in the RegArima model
+if at least one t-statistic is greater than 2.6 or if two t-statistics are greater than 2.0 (in absolute terms);
+<code>"Joint_F"</code> = a joint F-test of significance of all the trading day variables. The trading day effect is significant if the F statistic is greater than 0.95.</p></td>
     </tr>
     <tr>
       <th>easter.type</th>
-      <td><p>specifies the presence and the length of the Easter effect: <code>"Unused"</code> - Easter effect is not considered; <code>"Standard"</code> - influences the period of <code>n</code> days strictly before Easter Sunday; <code>"IncludeEaster"</code> - influences the entire period (<code>n</code>) up to and including Easter Sunday; <code>"IncludeEasterMonday"</code> - influences the entire period (<code>n</code>) up to and including Easter Monday.</p></td>
+      <td><p>a<code>character</code> that specifies the presence and the length of the Easter effect:
+<code>"Unused"</code> = the Easter effect is not considered; <code>"Standard"</code> = influences the period of <code>n</code> days strictly before Easter Sunday;
+<code>"IncludeEaster"</code> = influences the entire period (<code>n</code>) up to and including Easter Sunday;
+<code>"IncludeEasterMonday"</code> = influences the entire period (<code>n</code>) up to and including Easter Monday.</p></td>
     </tr>
     <tr>
       <th>easter.julian</th>
-      <td><p>logicals. If <code>TRUE</code> the program uses the Julian Easter (expressed in Gregorian calendar).</p></td>
+      <td><p><code>logical</code>. If <code>TRUE</code>, the program uses the Julian Easter (expressed in Gregorian calendar).</p></td>
     </tr>
     <tr>
       <th>easter.duration</th>
-      <td><p>numeric indicating the duration of the Easter effect (length in days, between 1 and 15).</p></td>
+      <td><p><code>numeric</code> indicating the duration of the Easter effect (length in days, between 1 and 15).</p></td>
     </tr>
     <tr>
       <th>easter.test</th>
-      <td><p>logicals. If <code>TRUE</code> the program performs a t-test for the significance of the Easter effect. The Easter effect is considered as significant if the modulus of t-statistic is greater than 1.96.</p></td>
+      <td><p><code>logical</code>. If <code>TRUE</code>, the program performs a t-test for the significance of the Easter effect.
+The Easter effect is considered as significant if the modulus of t-statistic is greater than 1.96.</p></td>
     </tr>
     <tr>
       <th>outlier.enabled</th>
-      <td><p>logicals. If <code>TRUE</code> the automatic detection of outliers is enabled in the defined time span.</p>
-<p>The time span of the series to be searched for outliers (default from 1900-01-01 to 2020-12-31) is controlled by the following six variables: <code>outlier.from, outlier.to, outlier.first, outlier.last, outlier.exclFirst</code> and <code>outlier.exclLast</code>; where <code>outlier.from</code> and <code>outlier.to</code> have priority over remaining span control variables, <code>outlier.last</code> and <code>outlier.first</code> have priority over <code>outlier.exclFirst</code> and <code>outlier.exclLast</code>, and <code>outlier.last</code> has priority over <code>outlier.first</code>.</p></td>
+      <td><p><code>logical</code>. If <code>TRUE</code>, the automatic detection of outliers is enabled in the defined time span.</p>
+<p>The time span of the series to be searched for outliers (default from 1900-01-01 to 2020-12-31) is controlled by the following six variables:
+<code>outlier.from, outlier.to, outlier.first, outlier.last, outlier.exclFirst</code> and <code>outlier.exclLast</code>;
+where <code>outlier.from</code> and <code>outlier.to</code> have priority over the remaining span control variables,
+<code>outlier.last</code> and <code>outlier.first</code> have priority over <code>outlier.exclFirst</code> and <code>outlier.exclLast</code>,
+and <code>outlier.last</code> has priority over <code>outlier.first</code>.</p></td>
     </tr>
     <tr>
       <th>outlier.from</th>
-      <td><p>character in format "YYYY-MM-DD" indicating the start of the time span (e.g. "1900-01-01"). Can be combined with <code>outlier.to</code>.</p></td>
+      <td><p>a character in format "YYYY-MM-DD" indicating the start of the time span (e.g. "1900-01-01").
+It can be combined with <code>outlier.to</code>.</p></td>
     </tr>
     <tr>
       <th>outlier.to</th>
-      <td><p>character in format "YYYY-MM-DD" indicating the end of the time span (e.g. "2020-12-31"). Can be combined with <code>outlier.from</code>.</p></td>
+      <td><p>a character in format "YYYY-MM-DD" indicating the end of the time span (e.g. "2020-12-31").
+It can be combined with <code>outlier.from</code>.</p></td>
     </tr>
     <tr>
       <th>outlier.first</th>
-      <td><p>numeric specifying the number of periods considered at the beginning of the series.</p></td>
+      <td><p><code>numeric</code> specifying the number of periods considered at the beginning of the series.</p></td>
     </tr>
     <tr>
       <th>outlier.last</th>
-      <td><p>numeric specifying the number of periods considered at the end of the series.</p></td>
+      <td><p><code>numeric</code> specifying the number of periods considered at the end of the series.</p></td>
     </tr>
     <tr>
       <th>outlier.exclFirst</th>
-      <td><p>numeric specifying the number of periods excluded at the beginning of the series. Can be combined with <code>outlier.exclLast</code>.</p></td>
+      <td><p><code>numeric</code> specifying the number of periods excluded at the beginning of the series. It can be combined with <code>outlier.exclLast</code>.</p></td>
     </tr>
     <tr>
       <th>outlier.exclLast</th>
-      <td><p>numeric specifying the number of periods excluded at the end of the series. Can be combined with <code>outlier.exclFirst</code>.</p></td>
+      <td><p><code>numeric</code> specifying the number of periods excluded at the end of the series. It can be combined with <code>outlier.exclFirst</code>.</p></td>
     </tr>
     <tr>
       <th>outlier.ao</th>
-      <td><p>logicals. If <code>TRUE</code> the automatic detection of additive outliers is enabled (<code>outlier.enabled</code> must be also set to <code>TRUE</code>).</p></td>
+      <td><p><code>logical</code>. If <code>TRUE</code>, the automatic detection of additive outliers is enabled (<code>outlier.enabled</code> must also be set to <code>TRUE</code>).</p></td>
     </tr>
     <tr>
       <th>outlier.tc</th>
-      <td><p>logicals. If <code>TRUE</code> the automatic detection of transitory changes is enabled (<code>outlier.enabled</code> must be also set to <code>TRUE</code>).</p></td>
+      <td><p><code>logical</code>. If <code>TRUE</code>, the automatic detection of transitory changes is enabled (<code>outlier.enabled</code> must also be set to <code>TRUE</code>).</p></td>
     </tr>
     <tr>
       <th>outlier.ls</th>
-      <td><p>logicals. If <code>TRUE</code> the automatic detection of level shifts is enabled (<code>outlier.enabled</code> must be also set to <code>TRUE</code>).</p></td>
+      <td><p><code>logical</code>. If <code>TRUE</code>, the automatic detection of level shifts is enabled (<code>outlier.enabled</code> must also be set to <code>TRUE</code>).</p></td>
     </tr>
     <tr>
       <th>outlier.so</th>
-      <td><p>logicals. If <code>TRUE</code> the automatic detection of seasonal outliers is enabled (<code>outlier.enabled</code> must be also set to <code>TRUE</code>).</p></td>
+      <td><p><code>logical</code>. If <code>TRUE</code>, the automatic detection of seasonal outliers is enabled (<code>outlier.enabled</code> must also be set to <code>TRUE</code>).</p></td>
     </tr>
     <tr>
       <th>outlier.usedefcv</th>
-      <td><p>logicals. If <code>TRUE</code> the critical value for the outliers' detection procedure is automatically determined by the number of observations in the outlier detection time span. If <code>FALSE</code> the procedure uses the inputted critical value (<code>outlier.cv</code>).</p></td>
+      <td><p><code>logical</code>. If <code>TRUE</code>, the critical value for the outliers' detection procedure is automatically determined
+by the number of observations in the outlier detection time span. If <code>FALSE</code>, the procedure uses the entered critical value (<code>outlier.cv</code>).</p></td>
     </tr>
     <tr>
       <th>outlier.cv</th>
-      <td><p>numeric. Inputted critical value for the outliers' detection procedure. The modification of this variable is taken in to account only when <code>outlier.usedefcv</code> is set to <code>FALSE</code>.</p></td>
+      <td><p><code>numeric</code>. The entered critical value for the outliers' detection procedure. The modification of this variable
+is only taken in to account when <code>outlier.usedefcv</code> is set to <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>outlier.eml</th>
-      <td><p>logicals, exact likelihood estimation method.Controls the method applied for a parameter estimation in the intermediate steps of the automatic detection and correction of outliers.  If <code>TRUE</code> an exact likelihood estimation method is used, when <code>FALSE</code> the fast Hannan-Rissanen method is used.</p></td>
+      <td><p><code>logical</code> for the exact likelihood estimation method. It controls the method applied for a parameter estimation
+in the intermediate steps of the automatic detection and correction of outliers. If <code>TRUE</code>, an exact likelihood estimation method is used.
+When <code>FALSE</code>, the fast Hannan-Rissanen method is used.</p></td>
     </tr>
     <tr>
       <th>outlier.tcrate</th>
-      <td><p>numeric. The rate of decay for the transitory change outlier.</p></td>
+      <td><p><code>numeric</code>. The rate of decay for the transitory change outlier.</p></td>
     </tr>
     <tr>
       <th>automdl.enabled</th>
-      <td><p>logicals. If <code>TRUE</code> the automatic modelling of the ARIMA model is enabled. If <code>FALSE</code> the parameters of the ARIMA model can be specified.</p>
+      <td><p><code>logical</code>. If <code>TRUE</code>, the automatic modelling of the ARIMA model is enabled.
+If <code>FALSE</code>, the parameters of the ARIMA model can be specified.</p>
 <p>Control variables for the automatic modelling of the ARIMA model (<code>automdl.enabled</code> is set to <code>TRUE</code>):</p></td>
     </tr>
     <tr>
       <th>automdl.acceptdefault</th>
-      <td><p>logicals. If <code>TRUE</code> the default model (ARIMA(0,1,1)(0,1,1)) may be chosen in the first step of the automatic model identification. If the Ljung-Box Q statistics for the residuals is acceptable, the default model is accepted and no further attempt will be made to identify any other.</p></td>
+      <td><p><code>logical</code>. If <code>TRUE</code>, the default model (ARIMA(0,1,1)(0,1,1)) may be chosen in the first step
+of the automatic model identification. If the Ljung-Box Q statistics for the residuals is acceptable, the default model is accepted
+and no further attempt will be made to identify another model.</p></td>
     </tr>
     <tr>
       <th>automdl.cancel</th>
-      <td><p>numeric, cancelation limit. If the difference in moduli of an AR and an MA roots (when estimating ARIMA(1,0,1)(1,0,1) models in the second step of the automatic identification of the differencing orders) is smaller than cancelation limit, the two roots are assumed equal and cancel out.</p></td>
+      <td><p><code>numeric</code>, the cancelation limit. If the difference in moduli of an AR and an MA roots (when estimating ARIMA(1,0,1)(1,0,1) models
+in the second step of the automatic identification of the differencing orders) is smaller than the cancelation limit, the two roots are assumed equal and cancel out.</p></td>
     </tr>
     <tr>
       <th>automdl.ub1</th>
-      <td><p>numeric, first unit root limit. It is the threshold value for the initial unit root test in the automatic differencing procedure. When one of the roots in the estimation of the ARIMA(2,0,0)(1,0,0) plus mean model, performed in the first step of the automatic model identification procedure, is larger than first unit root limit in modulus, it is set equal to unity.</p></td>
+      <td><p><code>numeric</code>, the first unit root limit. It is the threshold value for the initial unit root test in the automatic differencing procedure.
+When one of the roots in the estimation of the ARIMA(2,0,0)(1,0,0) plus mean model, performed in the first step of the automatic model identification procedure,
+is larger than first unit root limit in modulus, it is set equal to unity.</p></td>
     </tr>
     <tr>
       <th>automdl.ub2</th>
-      <td><p>numeric, second unit root limit. When one of the roots in the estimation of the ARIMA(1,0,1)(1,0,1) plus mean model, which is performed in the second step of the automatic model identification procedure, is larger than second unit root limit in modulus, it is checked if there is a common factor in the corresponding AR and MA polynomials of the ARMA model that can be cancelled (see <code>automdl.cancel</code>). If there is no cancellation, the AR root is set equal to unity (i.e. the differencing order changes).</p></td>
+      <td><p><code>numeric</code>, the second unit root limit. When one of the roots in the estimation of the ARIMA(1,0,1)(1,0,1) plus mean model,
+which is performed in the second step of the automatic model identification procedure, is larger than second unit root limit in modulus,
+it is checked if there is a common factor in the corresponding AR and MA polynomials of the ARMA model that can be cancelled (see <code>automdl.cancel</code>).
+If there is no cancellation, the AR root is set equal to unity (i.e. the differencing order changes).</p></td>
     </tr>
     <tr>
       <th>automdl.armalimit</th>
-      <td><p>numeric, arma limit. It is the threshold value for t-statistics of ARMA coefficients and constant term used for the final test of model parsimony. If the highest order ARMA coefficient has a t-value less than this value in magnitude, the order of the model is reduced. Also if the constant term has a t-value less than arma limit in magnitude, it is removed from the set of regressors.</p></td>
+      <td><p><code>numeric</code>, the arma limit. It is the threshold value for t-statistics of ARMA coefficients and the constant term used
+for the final test of model parsimony. If the highest order ARMA coefficient has a t-value smaller than this value in magnitude, the order of the model is reduced.
+If the constant term has a t-value smaller than the ARMA limit in magnitude, it is removed from the set of regressors.</p></td>
     </tr>
     <tr>
       <th>automdl.reducecv</th>
-      <td><p>numeric, ReduceCV.  The percentage by which the outlier's critical value will be reduced when an identified model is found to have a Ljung-Box statistic with an unacceptable confidence coefficient. The parameter should be between 0 and 1, and will only be active when automatic outlier identification is enabled. The reduced critical value will be set to (1-ReduceCV)xCV, where CV is the original critical value.</p></td>
+      <td><p><code>numeric</code>, ReduceCV. The percentage by which the outlier critical value will be reduced
+when an identified model is found to have a Ljung-Box statistic with an unacceptable confidence coefficient.
+The parameter should be between 0 and 1, and will only be active when automatic outlier identification is enabled.
+The reduced critical value will be set to (1-ReduceCV)xCV, where CV is the original critical value.</p></td>
     </tr>
     <tr>
       <th>automdl.ljungboxlimit</th>
-      <td><p>numeric, Ljung Box limit. Acceptance criterion for the confidence intervals of the Ljung-Box Q statistic. If the LjungBox Q statistics for the residuals of a final model is greater than Ljung Box limit, the model is rejected, the outlier critical value is reduced, and model and outlier identification (if specified) is redone with a reduced value.</p></td>
+      <td><p><code>numeric</code>, the Ljung Box limit, setting the acceptance criterion for the confidence intervals of the Ljung-Box Q statistic.
+If the LjungBox Q statistics for the residuals of a final model is greater than Ljung Box limit, then the model is rejected, the outlier critical value is reduced,
+and model and outlier identification (if specified) is redone with a reduced value.</p></td>
     </tr>
     <tr>
       <th>automdl.compare</th>
-      <td><p>logicals. If TRUE the program compares the model identified by the automatic procedure to the default model (ARIMA(0,1,1)(0,1,1)) and the model with the best fit is selected. Criteria considered are residual diagnostics, the model structure and the number of outliers.</p>
+      <td><p><code>logical</code>. If TRUE, the program compares the model identified by the automatic procedure to the default model (ARIMA(0,1,1)(0,1,1))
+and the model with the best fit is selected. Criteria considered are residual diagnostics, the model structure and the number of outliers.</p>
 <p>Control variables for the non-automatic modelling of the ARIMA model (<code>automdl.enabled</code> is set to <code>FALSE</code>):</p></td>
     </tr>
     <tr>
       <th>arima.mu</th>
-      <td><p>logicals. If <code>TRUE</code>, the mean is considered as part of the ARIMA model.</p></td>
+      <td><p><code>logical</code>. If <code>TRUE</code>, the mean is considered as part of the ARIMA model.</p></td>
     </tr>
     <tr>
       <th>arima.p</th>
-      <td><p>numeric. The order of the non-seasonal autoregressive (AR) polynomial.</p></td>
+      <td><p><code>numeric</code>. The order of the non-seasonal autoregressive (AR) polynomial.</p></td>
     </tr>
     <tr>
       <th>arima.d</th>
-      <td><p>numeric. Regular differencing order.</p></td>
+      <td><p><code>numeric</code>. The regular differencing order.</p></td>
     </tr>
     <tr>
       <th>arima.q</th>
-      <td><p>numeric. The order of the non-seasonal moving average (MA) polynomial.</p></td>
+      <td><p><code>numeric</code>. The order of the non-seasonal moving average (MA) polynomial.</p></td>
     </tr>
     <tr>
       <th>arima.bp</th>
-      <td><p>numeric. The order of the seasonal autoregressive (AR) polynomial.</p></td>
+      <td><p><code>numeric</code>. The order of the seasonal autoregressive (AR) polynomial.</p></td>
     </tr>
     <tr>
       <th>arima.bd</th>
-      <td><p>numeric. Seasonal differencing order.</p></td>
+      <td><p><code>numeric</code>. The seasonal differencing order.</p></td>
     </tr>
     <tr>
       <th>arima.bq</th>
-      <td><p>numeric. The order of the seasonal moving average (MA) polynomial.</p>
-<p>Control variables for the user-defined ARMA coefficients. Coefficients can be defined for the regular and seasonal autoregressive (AR) polynomials and moving average (MA) polynomials. The model considers the coefficients only if the procedure for their estimation (<code>arima.coefType</code>) is provided, and the number of provided coefficients matches the sum of (regular and seasonal) AR and MA orders (<code>p,q,bp,bq</code>).</p></td>
+      <td><p><code>numeric</code>. The order of the seasonal moving average (MA) polynomial.</p>
+<p>Control variables for the user-defined ARMA coefficients. Such coefficients can be defined for the regular and seasonal autoregressive (AR) polynomials
+and moving average (MA) polynomials. The model considers the coefficients only if the procedure for their estimation (<code>arima.coefType</code>) is provided,
+and the number of provided coefficients matches the sum of (regular and seasonal) AR and MA orders (<code>p,q,bp,bq</code>).</p></td>
     </tr>
     <tr>
       <th>arima.coefEnabled</th>
-      <td><p>logicals. If <code>TRUE</code> the program uses the user-defined ARMA coefficients.</p></td>
+      <td><p><code>logical</code>. If <code>TRUE</code>, the program uses the user-defined ARMA coefficients.</p></td>
     </tr>
     <tr>
       <th>arima.coef</th>
-      <td><p>vector providing the coefficients for the regular and seasonal AR and MA polynominals. The length of the vector must equal the sum of the regular and seasonal AR and MA orders. The coefficients shall be provided in the order: regular AR (<em>Phi</em> - <code>p</code> elements), regular MA  (<em>Theta</em> - <code>q</code> elements), seasonal AR (<em>BPhi</em> - <code>bp</code> elements) and seasonal MA (<em>BTheta</em> - <code>bq</code> elements). E.g.: <code>arima.coef=c(0.6,0.7)</code> with <code>arima.p=1, arima.q=0,arima.bp=1</code> and <code>arima.bq=0</code>.</p></td>
+      <td><p>a vector providing the coefficients for the regular and seasonal AR and MA polynominals.
+The length of the vector must be equal to the sum of the regular and seasonal AR and MA orders. The coefficients shall be provided in the following order:
+regular AR (<em>Phi</em> - <code>p</code> elements), regular MA  (<em>Theta</em> - <code>q</code> elements), seasonal AR (<em>BPhi</em> - <code>bp</code> elements)
+and seasonal MA (<em>BTheta</em> - <code>bq</code> elements).
+E.g.: <code>arima.coef=c(0.6,0.7)</code> with <code>arima.p=1, arima.q=0,arima.bp=1</code> and <code>arima.bq=0</code>.</p></td>
     </tr>
     <tr>
       <th>arima.coefType</th>
-      <td><p>vector defining ARMA coefficients estimation procedure. Possible procedures are: <code>"Undefined"</code> - no use of user-defined input (i.e. coefficients are estimated), <code>"Fixed"</code> - fixes the coefficients at the value provided by the user, <code>"Initial"</code> - the value defined by the user is used as initial condition. For orders for which the coefficients shall not be defined, the <code>arima.coef</code> can be set to <code>NA</code> or <code>0</code> or the <code>arima.coefType</code> can be set to <code>"Undefined"</code>.
+      <td><p>avector defining the ARMA coefficients estimation procedure. Possible procedures are:
+<code>"Undefined"</code> = no use of user-defined input (i.e. coefficients are estimated),
+<code>"Fixed"</code> = fixes the coefficients at the value provided by the user,
+<code>"Initial"</code> = the value defined by the user is used as initial condition.
+For orders for which the coefficients shall not be defined, the <code>arima.coef</code> can be set to <code>NA</code> or <code>0</code>
+or the <code>arima.coefType</code> can be set to <code>"Undefined"</code>.
 E.g.: <code>arima.coef = c(-0.8,-0.6,NA)</code>, <code>arima.coefType = c("Fixed","Fixed","Undefined")</code>.</p></td>
     </tr>
     <tr>
       <th>fcst.horizon</th>
-      <td><p>numeric, forecasts horizon. Length of the forecasts generated by the RegARIMA model in periods (positive values) or years (negative values). By default the program generates two years forecasts (<code>fcst.horizon</code> set to <code>-2</code>).</p></td>
+      <td><p><code>numeric</code>, the forecasting horizon. The length of the forecasts generated by the RegARIMA model
+in periods (positive values) or years (negative values). By default, the program generates two years forecasts (<code>fcst.horizon</code> set to <code>-2</code>).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list of class <code><a href='https://rdrr.io/r/base/c.html'>c("regarima_spec","TRAMO_SEATS")</a></code> with the below components. Each component refers to different part of the RegARIMA model specification, mirroring the arguments of the function (for details see arguments description). Each of the lowest-level component (except span, pre-specified outliers, user-defined variables and pre-specified ARMA coefficients) is structured within a data frame with columns denoting different variables of the model specification and rows referring to: first row - base specification, as provided within the argument <code>spec</code>; second row - user modifications as specified by the remaining arguments of the function (e.g.: <code>arima.d</code>); and third row - final model specification, values that will be used in the function <code><a href='regarima.html'>regarima</a></code>. The final specification (third row) shall include user modifications (row two) unless they were wrongly specified. The pre-specified outliers, user-defined variables and pre-specified ARMA coefficients consist of a list with the <code>Predefined</code> (base model specification) and <code>Final</code> values.</p>
-<dt>estimate</dt><dd><p>data frame. Variables referring to: <code>span</code> - time span for the model estimation, <code>tolerance</code> - argument <code>estimate.tol</code>, <code>exact_ml</code> - argument <code>estimate.eml</code>,
-<code>urfinal</code> - argument <code>esimate.urfinal</code>. The final values can be also accessed with the function <code><a href='specification.html'>s_estimate</a></code>.</p></dd>
-
-<dt>transform</dt><dd><p>data frame. Variables referring to: <code>tfunction</code> - argument <code>transform.function</code>, <code>fct</code> - argument <code>transform.fct</code>. The final values can be also accessed with the function <code><a href='specification.html'>s_transform</a></code>.</p></dd>
-
-<dt>regression</dt><dd><p>list including the information on the user-defined variables (<code>userdef</code>), <code>trading.days</code> effect and <code>easter</code> effect. The user-defined part includes: <code>specification</code> - data frame with the information if pre-specified outliers (<code>outlier</code>) and user-defined variables (<code>variables</code>) are included in the model and if fixed coefficients are used (<code>outlier.coef</code> and <code>variables.coef</code>). The final values can be also accessed with the function <code><a href='specification.html'>s_usrdef</a></code>; <code>outliers</code> - matrixes with the outliers (<code>Predefined</code> and <code>Final</code>). The final outliers can be also accessed with the function <code><a href='specification.html'>s_preOut</a></code>; and <code>variables</code> - list with the <code>Predefined</code> and <code>Final</code> user-defined variables (<code>series</code>) and its description (<code>description</code>) including the information on the variable type and values of fixed coefficients. The final user-defined variables can be also accessed with the function <code><a href='specification.html'>s_preVar</a></code>.
-Within the data frame <code>trading.days</code> variables refer to:
+    <p>A list of class <code><a href='https://rdrr.io/r/base/c.html'>c("regarima_spec","TRAMO_SEATS")</a></code> with the following components, each referring to a different part
+of the RegARIMA model specification, mirroring the arguments of the function (for details, see the arguments description).
+Each lowest-level component (except the span, pre-specified outliers, user-defined variables and pre-specified ARMA coefficients)
+is structured within a data frame with columns denoting different variables of the model specification and rows referring to:
+first row = the base specification, as provided within the argument <code>spec</code>;
+second row = user modifications as specified by the remaining arguments of the function (e.g.: <code>arima.d</code>);
+and third row = the final model specification, values that will be used in the function <code><a href='regarima.html'>regarima</a></code>.
+The final specification (third row) shall include user modifications (row two) unless they were wrongly specified.
+The pre-specified outliers, user-defined variables and pre-specified ARMA coefficients consist of a list
+with the <code>Predefined</code> (base model specification) and <code>Final</code> values.</p><ul>
+<li><p>estimatea data frame containing Variables referring to: <code>span</code> - time span for the model estimation,
+<code>tolerance</code> - argument <code>estimate.tol</code>, <code>exact_ml</code> - argument <code>estimate.eml</code>, <code>urfinal</code> - argument <code>esimate.urfinal</code>.
+The final values can be also accessed with the function <code><a href='specification.html'>s_estimate</a></code>.</p></li>
+<li><p>transforma data frame containing variables referring to: <code>tfunction</code> - argument <code>transform.function</code>,
+<code>fct</code> - argument <code>transform.fct</code>. The final values can be also accessed with the function <code><a href='specification.html'>s_transform</a></code>.</p></li>
+<li><p>regressiona list containing information on the user-defined variables (<code>userdef</code>), <code>trading.days</code> effect and <code>easter</code> effect.
+The user-defined part includes: <code>specification</code> - data frame with the information if pre-specified outliers (<code>outlier</code>)
+and user-defined variables (<code>variables</code>) are included in the model and if fixed coefficients are used (<code>outlier.coef</code>
+and <code>variables.coef</code>).
+The final values can be also accessed with the function <code><a href='specification.html'>s_usrdef</a></code>; <code>outliers</code> - matrixes with the outliers
+(<code>Predefined</code> and <code>Final</code>). The final outliers can be also accessed with the function <code><a href='specification.html'>s_preOut</a></code>;
+and <code>variables</code> - list with the <code>Predefined</code> and <code>Final</code> user-defined variables (<code>series</code>) and its description
+(<code>description</code>) including information on the variable type and values of fixed coefficients.
+The final user-defined variables can be also accessed with the function <code><a href='specification.html'>s_preVar</a></code>.The <code>trading.days</code> data frame variables refer to:
 <code>automatic</code> - argument <code>tradingdays.mauto</code>,
 <code>pftd</code> - argument <code>tradingdays.pftd</code>,
 <code>option</code> - argument <code>tradingdays.option</code>,
 <code>leapyear</code> - argument <code>tradingdays.leapyear</code>,
 <code>stocktd</code> - argument <code>tradingdays.stocktd</code>,
 <code>test</code> - argument <code>tradingdays.test</code>. The final <code>trading.days</code> values can be also accessed with the function <code><a href='specification.html'>s_td</a></code>.
-Within the data frame <code>easter</code> variables refer to:
+The <code>easter</code> data frame variables refer to:
 <code>type</code> - argument <code>easter.type</code>,
 <code>julian</code> - argument <code>easter.julian</code>,
 <code>duration</code> - argument <code>easter.duration</code>,
-<code>test</code> - argument <code>easter.test</code>. The final <code>easter</code> values can be also accessed with the function <code><a href='specification.html'>s_easter</a></code>.</p></dd>
-
-<dt>outliers</dt><dd><p>data frame. Variables referring to:
+<code>test</code> - argument <code>easter.test</code>. The final <code>easter</code> values can be also accessed with the function <code><a href='specification.html'>s_easter</a></code>.</p></li>
+<li><p>outliersa data frame. Variables referring to:
 <code>ao</code> - argument <code>outlier.ao</code>,
 <code>tc</code> - argument <code>outlier.tc</code>,
 <code>ls</code> - argument <code>outlier.ls</code>,
@@ -538,19 +636,27 @@ Within the data frame <code>easter</code> variables refer to:
 <code>usedefcv</code> - argument <code>outlier.usedefcv</code>,
 <code>cv</code> - argument <code>outlier.cv</code>,
 <code>eml</code> - argument <code>outlier.eml</code>,
-<code>tcrate</code> - argument <code>outlier.tcrate</code>. The final values can be also accessed with the function <code><a href='specification.html'>s_out</a></code>.</p></dd>
-
-<dt>arima</dt><dd><p>list containing a data frame with the ARIMA settings (<code>specification</code>) and matrixes with the information on the pre-specified ARMA coefficients (<code>coefficients</code>). The matrix <code>Predefined</code> refers to the pre-defined model specification and matrix <code>Final</code> to the final specification. Both matrixes contain the value of the ARMA coefficients and the procedure for its estimation.
-Within the data frame <code>specification</code> the variable <code>enabled</code> refer to the argument <code>automdl.enabled</code> and all the remaining variables (<code>automdl.acceptdefault, automdl.cancel, automdl.ub1, automdl.ub2, automdl.armalimit, automdl.reducecv, automdl.ljungboxlimit, automdl.compare, arima.mu, arima.p, arima.d, arima.q, arima.bp, arima.bd, arima.bq</code>) to the respective function arguments.
-The final values of the <code>specification</code> can be also accessed with the function <code><a href='specification.html'>s_arima</a></code> and final pre-specified ARMA coefficients with the function <code><a href='specification.html'>s_arimaCoef</a></code>.</p></dd>
-
-<dt>forecast</dt><dd><p>data frame with the forecast horizon (argument <code>fcst.horizon</code>). The final value can be also accessed with the function <code><a href='specification.html'>s_fcst</a></code>.</p></dd>
-
-<dt>span</dt><dd><p>matrix containing the final time span for the model estimation and outliers' detection. Contains the same information as the variable span in the data frames estimate and outliers.The matrix can be also accessed with the function <code><a href='specification.html'>s_span</a></code>.</p></dd>
+<code>tcrate</code> - argument <code>outlier.tcrate</code>. The final values can be also accessed with the function <code><a href='specification.html'>s_out</a></code>.</p></li>
+<li><p>arimaa list containing a data frame with the ARIMA settings (<code>specification</code>) and matrixes giving information
+on the pre-specified ARMA coefficients (<code>coefficients</code>). The matrix <code>Predefined</code> refers to the pre-defined model specification
+and matrix <code>Final</code>, to the final specification. Both matrixes contain the values of the ARMA coefficients and the procedure
+for its estimation.
+In the data frame <code>specification</code>, the variable <code>enabled</code> refers to the argument <code>automdl.enabled</code>
+and all remaining variables (<code>automdl.acceptdefault, automdl.cancel, automdl.ub1, automdl.ub2, automdl.armalimit,
+automdl.reducecv, automdl.ljungboxlimit, automdl.compare, arima.mu, arima.p, arima.d, arima.q, arima.bp, arima.bd,
+arima.bq</code>), to the respective function arguments.
+The final values of the <code>specification</code> can be also accessed with the function <code><a href='specification.html'>s_arima</a></code>,
+and final pre-specified ARMA coefficients with the function <code><a href='specification.html'>s_arimaCoef</a></code>.</p></li>
+<li><p>forecasta data frame with the forecasting horizon (argument <code>fcst.horizon</code>).
+The final value can be also accessed with the function <code><a href='specification.html'>s_fcst</a></code>.</p></li>
+<li><p>spana matrix containing the final time span for the model estimation and outliers' detection.
+It contains the same information as the variable span in the data frames estimate and outliers.
+The matrix can be also accessed with the function <code><a href='specification.html'>s_span</a></code>.</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The available predefined 'JDemetra+' model specifications are described in the table below.</p>
+    <p>The available predefined 'JDemetra+' model specifications are described in the table below:</p>
 <table class='table'>
 <tr><td><strong>Identifier</strong> |</td><td><strong>Log/level detection</strong> |</td><td><strong>Outliers detection</strong> |</td><td><strong>Calendar effects</strong> |</td><td><strong>ARIMA</strong></td><td>TR0 |</td><td><em>NA</em> |</td><td><em>NA</em> |</td></tr>
 <tr><td><em>NA</em> |</td><td>Airline(+mean)</td><td>TR1 |</td><td>automatic |</td><td>AO/LS/TC |</td><td><em>NA</em> |</td><td>Airline(+mean)</td><td>TR2 |</td></tr>
@@ -571,7 +677,7 @@ The final values of the <code>specification</code> can be also accessed with the
 <span class='va'>myspec1</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span>spec <span class='op'>=</span> <span class='st'>"TRfull"</span><span class='op'>)</span>
 <span class='va'>myreg1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>, spec <span class='op'>=</span> <span class='va'>myspec1</span><span class='op'>)</span>
 
- <span class='co'># Modify a pre-specified model specification</span>
+ <span class='co'># To modify a pre-specified model specification</span>
 <span class='va'>myspec2</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span>spec <span class='op'>=</span> <span class='st'>"TRfull"</span>,
              tradingdays.mauto <span class='op'>=</span> <span class='st'>"Unused"</span>,
              tradingdays.option <span class='op'>=</span> <span class='st'>"WorkingDays"</span>,
@@ -579,7 +685,7 @@ The final values of the <code>specification</code> can be also accessed with the
              automdl.enabled <span class='op'>=</span> <span class='cn'>FALSE</span>, arima.mu <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='va'>myreg2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>, spec <span class='op'>=</span> <span class='va'>myspec2</span><span class='op'>)</span>
 
- <span class='co'># Modify the model specification from a "regarima" object</span>
+ <span class='co'># To modify the model specification of a "regarima" object</span>
 <span class='va'>myspec3</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span><span class='va'>myreg1</span>,
              tradingdays.mauto <span class='op'>=</span> <span class='st'>"Unused"</span>,
              tradingdays.option <span class='op'>=</span> <span class='st'>"WorkingDays"</span>,
@@ -587,7 +693,7 @@ The final values of the <code>specification</code> can be also accessed with the
              arima.mu <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='va'>myreg3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>, <span class='va'>myspec3</span><span class='op'>)</span>
 
- <span class='co'># Modify the model specification from a "regarima_spec" object</span>
+ <span class='co'># To modify the model specification of a "regarima_spec" object</span>
 <span class='va'>myspec4</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span><span class='va'>myspec1</span>,
              tradingdays.mauto <span class='op'>=</span> <span class='st'>"Unused"</span>,
              tradingdays.option <span class='op'>=</span> <span class='st'>"WorkingDays"</span>,

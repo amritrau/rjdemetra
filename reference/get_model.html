@@ -47,8 +47,8 @@
 
 
 <meta property="og:title" content="Get the seasonally adjusted model from a workspace — get_model" />
-<meta property="og:description" content="Generics functions to get seasonally adjusted model(s) from workspace,
-multiprocessing or sa_item object. get_model returns a &quot;SA&quot; objects while  get_jmodel returns the Java objects of the models." />
+<meta property="og:description" content="Generic functions to retrieve seasonally adjusted model(s) from workspace,
+multiprocessing or sa_item object. get_model returns a &quot;SA&quot; object while get_jmodel returns the Java objects of the models." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -159,8 +159,8 @@ multiprocessing or sa_item object. get_model returns a &quot;SA&quot; objects wh
     </div>
 
     <div class="ref-description">
-    <p>Generics functions to get seasonally adjusted model(s) from <code>workspace</code>,
-<code>multiprocessing</code> or <code>sa_item</code> object. <code>get_model</code> returns a <code>"SA"</code> objects while  <code>get_jmodel</code> returns the Java objects of the models.</p>
+    <p>Generic functions to retrieve seasonally adjusted model(s) from <code>workspace</code>,
+<code>multiprocessing</code> or <code>sa_item</code> object. <code>get_model</code> returns a <code>"SA"</code> object while <code>get_jmodel</code> returns the Java objects of the models.</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_jmodel</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>workspace</span>, userdefined <span class='op'>=</span> <span class='cn'>NULL</span>, progress_bar <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
@@ -172,36 +172,36 @@ multiprocessing or sa_item object. get_model returns a &quot;SA&quot; objects wh
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>the object to get the seasonally adjusted model.</p></td>
+      <td><p>the object from which to retrieve the seasonally adjusted model.</p></td>
     </tr>
     <tr>
       <th>workspace</th>
-      <td><p>the workspace object where models are stored. If <code>x</code> is a <code>workspace</code> object this parameter is not used.</p></td>
+      <td><p>the workspace object where models are stored. If <code>x</code> is a <code>workspace</code> object, this parameter is not used.</p></td>
     </tr>
     <tr>
       <th>userdefined</th>
-      <td><p>vector with characters for additional output variables.
+      <td><p>a vector containing the names of additional output variables.
 (see <code><a href='x13.html'>x13</a></code> or <code><a href='tramoseats.html'>tramoseats</a></code>).</p></td>
     </tr>
     <tr>
       <th>progress_bar</th>
-      <td><p>boolean: if <code>TRUE</code> a progress bar is printed.</p></td>
+      <td><p>boolean: if <code>TRUE</code>, a progress bar is printed.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>get_model()</code> returns a seasonally adjust object (class <code><a href='https://rdrr.io/r/base/c.html'>c("SA", "X13")</a></code> or <code>c("SA", "TRAMO_SEATS"</code>) or list of seasonally adjust objects:</p><ul>
+    <p><code>get_model()</code> returns a seasonally adjusted object (class <code><a href='https://rdrr.io/r/base/c.html'>c("SA", "X13")</a></code> or <code>c("SA", "TRAMO_SEATS"</code>) or a list of seasonally adjusted objects:</p><ul>
 <li><p>if <code>x</code> is a <code>sa_item</code> object, <code>get_model(x)</code> returns a <code>"SA"</code> object (or a <code><a href='jSA.html'>jSA</a></code> object with <code>get_jmodel(x)</code>);</p></li>
-<li><p>if <code>x</code> is a <code>multiprocessing</code> object, <code><a href='get_ts.html'>get_ts(x)</a></code> returns list of length the number
+<li><p>if <code>x</code> is a <code>multiprocessing</code> object, <code><a href='get_ts.html'>get_ts(x)</a></code> returns a list of length the number
  of sa_items, each element containing a <code>"SA"</code> object (or a <code><a href='jSA.html'>jSA</a></code> object with <code>get_jmodel(x)</code>);</p></li>
-<li><p>if <code>x</code> is a <code>workspace</code> object, <code><a href='get_ts.html'>get_ts(x)</a></code> returns list of length the number of multiprocessing,
- each element containing a list of a <code>"SA"</code> object (or a <code><a href='jSA.html'>jSA</a></code> object with <code>get_jmodel(x)</code>).</p></li>
+<li><p>if <code>x</code> is a <code>workspace</code> object, <code><a href='get_ts.html'>get_ts(x)</a></code> returns list of length the number of multiprocessings,
+ each element containing a list of <code>"SA"</code> object(s) (or <code><a href='jSA.html'>jSA</a></code> object's) with <code>get_jmodel(x)</code>).</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other functions to get informations from a workspace, multiprocessing or sa_item: <code><a href='count.html'>count</a></code>, <code><a href='get_name.html'>get_name</a></code>, <code><a href='get_ts.html'>get_ts</a></code>.</p>
+    <div class='dont-index'><p>Other functions to retrieve information from a workspace, multiprocessing or sa_item: <code><a href='count.html'>count</a></code>, <code><a href='get_name.html'>get_name</a></code>, <code><a href='get_ts.html'>get_ts</a></code>.</p>
 <p><code><a href='compute.html'>compute</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -216,10 +216,10 @@ multiprocessing or sa_item object. get_model returns a &quot;SA&quot; objects wh
 <span class='fu'><a href='add_sa_item.html'>add_sa_item</a></span><span class='op'>(</span><span class='va'>wk</span>, <span class='st'>"sa1"</span>, <span class='va'>sa_x13</span>, <span class='st'>"X13"</span><span class='op'>)</span>
 <span class='fu'><a href='add_sa_item.html'>add_sa_item</a></span><span class='op'>(</span><span class='va'>wk</span>, <span class='st'>"sa1"</span>, <span class='va'>sa_ts</span>, <span class='st'>"TramoSeats"</span><span class='op'>)</span>
 
-<span class='fu'><a href='compute.html'>compute</a></span><span class='op'>(</span><span class='va'>wk</span><span class='op'>)</span> <span class='co'># It's important to compute the workspace to get the SA model</span>
+<span class='fu'><a href='compute.html'>compute</a></span><span class='op'>(</span><span class='va'>wk</span><span class='op'>)</span> <span class='co'># It's important to compute the workspace before retrieving the SA model</span>
 <span class='va'>sa_item1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_object.html'>get_object</a></span><span class='op'>(</span><span class='va'>mp</span>, <span class='fl'>1</span><span class='op'>)</span>
 
-<span class='fu'>get_model</span><span class='op'>(</span><span class='va'>sa_item1</span>, <span class='va'>wk</span><span class='op'>)</span> <span class='co'># Extract the model of the sa_item1: its the object sa_x13</span>
+<span class='fu'>get_model</span><span class='op'>(</span><span class='va'>sa_item1</span>, <span class='va'>wk</span><span class='op'>)</span> <span class='co'># To extract the model of the sa_item1: its the object sa_x13</span>
 </div><div class='output co'>#&gt; <span style='font-weight: bold; text-decoration: underline;'>RegARIMA</span>
 #&gt; y = regression model + arima (2, 1, 1, 0, 1, 1)
 #&gt; Log-transformation: no
@@ -339,7 +339,7 @@ multiprocessing or sa_item object. get_model returns a &quot;SA&quot; objects wh
 #&gt; 
 #&gt; 
 #&gt; <span style='font-weight: bold; text-decoration: underline;'>Additional output variables</span></div><div class='input'>
-<span class='co'># To get all the models of the multiprocessing mp:</span>
+<span class='co'># To get all models from the multiprocessing mp:</span>
 <span class='fu'>get_model</span><span class='op'>(</span><span class='va'>mp</span>, <span class='va'>wk</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |===================================                                   |  50%  |                                                                              |======================================================================| 100%</div><div class='output co'>#&gt; $X13
 #&gt; <span style='font-weight: bold; text-decoration: underline;'>RegARIMA</span>
@@ -579,7 +579,7 @@ multiprocessing or sa_item object. get_model returns a &quot;SA&quot; objects wh
 #&gt; 
 #&gt; <span style='font-weight: bold; text-decoration: underline;'>Additional output variables</span>
 #&gt; </div><div class='input'>
-<span class='co'># To get all the models of the workspace wk:</span>
+<span class='co'># To get all models from the workspace wk:</span>
 <span class='fu'>get_model</span><span class='op'>(</span><span class='va'>wk</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Multiprocessing 1 on 1:
 #&gt;   |                                                                              |                                                                      |   0%  |                                                                              |===================================                                   |  50%  |                                                                              |======================================================================| 100%</div><div class='output co'>#&gt; $sa1

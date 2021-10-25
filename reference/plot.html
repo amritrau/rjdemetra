@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plotting regarima, decomposition or final results of SA — plot • RJDemetra</title>
+<title>Plotting regarima, decomposition or final results of a SA — plot • RJDemetra</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,12 @@
 
 
 
-<meta property="og:title" content="Plotting regarima, decomposition or final results of SA — plot" />
-<meta property="og:description" content="Plotting methods for the S3 class objects around the seasonal adjustment: &quot;regarima&quot; for RegARIMA,&quot;decomposition_X11&quot; and &quot;decomposition_SEATS&quot; for the decomposition with X13 and TRAMO-SEATS, &quot;final&quot; for the final SA results and &quot;SA&quot; for the entire seasonal adjustment object. The function plot.SA just calls the function plot.final." />
+<meta property="og:title" content="Plotting regarima, decomposition or final results of a SA — plot" />
+<meta property="og:description" content="Plotting methods for the S3 class objects around the seasonal adjustment:
+&quot;regarima&quot; for RegARIMA,&quot;decomposition_X11&quot; and &quot;decomposition_SEATS&quot; for
+the decomposition with X13 and TRAMO-SEATS, &quot;final&quot; for the final SA results
+and &quot;SA&quot; for the entire seasonal adjustment object.
+The function plot.SA just calls the function plot.final." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -152,13 +156,17 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plotting regarima, decomposition or final results of SA</h1>
+    <h1>Plotting regarima, decomposition or final results of a SA</h1>
     <small class="dont-index">Source: <a href='https://github.com/jdemetra/rjdemetra/blob/master/R/regarima_plot.R'><code>R/regarima_plot.R</code></a>, <a href='https://github.com/jdemetra/rjdemetra/blob/master/R/sa_plot.R'><code>R/sa_plot.R</code></a></small>
     <div class="hidden name"><code>plot.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Plotting methods for the S3 class objects around the seasonal adjustment: <code>"regarima"</code> for RegARIMA,<code>"decomposition_X11"</code> and <code>"decomposition_SEATS"</code> for the decomposition with X13 and TRAMO-SEATS, <code>"final"</code> for the final SA results and <code>"SA"</code> for the entire seasonal adjustment object. The function <code>plot.SA</code> just calls the function <code>plot.final</code>.</p>
+    <p>Plotting methods for the S3 class objects around the seasonal adjustment:
+<code>"regarima"</code> for RegARIMA,<code>"decomposition_X11"</code> and <code>"decomposition_SEATS"</code> for
+the decomposition with X13 and TRAMO-SEATS, <code>"final"</code> for the final SA results
+and <code>"SA"</code> for the entire seasonal adjustment object.
+The function <code>plot.SA</code> just calls the function <code>plot.final</code>.</p>
     </div>
 
     <pre class="usage"><span class='co'># S3 method for regarima</span>
@@ -200,31 +208,33 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>the object to plot.</p></td>
+      <td><p>the object to plot</p></td>
     </tr>
     <tr>
       <th>which</th>
-      <td><p>vector with numerics specifying which graphs should be plotted: (1) "Residuals", (2) "Histogram of residuals", (3) "Normal Q-Q", (4) "ACF of residuals", (5) "PACF of residuals", (6) "Decomposition", (7) "Decomposition - zoom".</p></td>
+      <td><p>a numeric vector specifying which graphs should be plotted:
+(1) "Residuals", (2) "Histogram of residuals", (3) "Normal Q-Q", (4) "ACF of residuals",
+(5) "PACF of residuals", (6) "Decomposition", (7) "Decomposition - zoom"</p></td>
     </tr>
     <tr>
       <th>caption</th>
-      <td><p>list or character with the graphs titles.</p></td>
+      <td><p>a string containing the graph title</p></td>
     </tr>
     <tr>
       <th>ask</th>
-      <td><p>logicals. If <code>TRUE</code>, the user will in future be prompted before a new graphical page is started.</p></td>
+      <td><p>a boolean. If <code>TRUE</code>, the user will be prompted before a new graphical page is started.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>other parameters.</p></td>
+      <td><p>other parameters</p></td>
     </tr>
     <tr>
       <th>first_date</th>
-      <td><p>the first date to start the plot. If missing the plot starts at the beginning of the time-series.</p></td>
+      <td><p>the plot starting date. If missing, the plot starts at the beginning of the time-series.</p></td>
     </tr>
     <tr>
       <th>last_date</th>
-      <td><p>the last date to end the plot. If missing the plot ends at the end of the time-series (eventually, including forecast).</p></td>
+      <td><p>the end date of the plot. If missing, the plot ends at the end of the time-series (eventually, including forecast).</p></td>
     </tr>
     <tr>
       <th>ylim</th>
@@ -232,11 +242,11 @@
     </tr>
     <tr>
       <th>forecast</th>
-      <td><p>logical indicating if forecasts should be included in the plot. If <code>TRUE</code> the forecast is plotted.</p></td>
+      <td><p>a boolean indicating if forecasts should be included in the plot. If <code>TRUE</code>, the forecast is plotted.</p></td>
     </tr>
     <tr>
       <th>type_chart</th>
-      <td><p>character vector indicating which type of chart to plot.</p></td>
+      <td><p>a string indicating which type of chart to plot</p></td>
     </tr>
     </table>
 
@@ -245,9 +255,9 @@
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='va'>myseries</span> <span class='op'>&lt;-</span> <span class='va'>ipi_c_eu</span><span class='op'>[</span>, <span class='st'>"FR"</span><span class='op'>]</span>
 <span class='va'>mysa</span> <span class='op'>&lt;-</span> <span class='fu'><a href='x13.html'>x13</a></span><span class='op'>(</span><span class='va'>myseries</span>, spec <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"RSA5c"</span><span class='op'>)</span><span class='op'>)</span>
- <span class='co'># RegArima</span>
+  <span class='co'># RegArima</span>
 <span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>regarima</span><span class='op'>)</span> <span class='co'># 6 graphics are plotted by default</span>
-</div><div class='img'><img src='plot-1.png' alt='' width='700' height='433' /></div><div class='img'><img src='plot-2.png' alt='' width='700' height='433' /></div><div class='img'><img src='plot-3.png' alt='' width='700' height='433' /></div><div class='img'><img src='plot-4.png' alt='' width='700' height='433' /></div><div class='img'><img src='plot-5.png' alt='' width='700' height='433' /></div><div class='img'><img src='plot-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># To only plot one graphic (here the residuals) changing the title:</span>
+</div><div class='img'><img src='plot-1.png' alt='' width='700' height='433' /></div><div class='img'><img src='plot-2.png' alt='' width='700' height='433' /></div><div class='img'><img src='plot-3.png' alt='' width='700' height='433' /></div><div class='img'><img src='plot-4.png' alt='' width='700' height='433' /></div><div class='img'><img src='plot-5.png' alt='' width='700' height='433' /></div><div class='img'><img src='plot-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># To plot only one graphic (here, the residuals) and change the title:</span>
 <span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>regarima</span>, which <span class='op'>=</span> <span class='fl'>1</span>, caption <span class='op'>=</span> <span class='st'>"Plot of residuals"</span><span class='op'>)</span>
 </div><div class='img'><img src='plot-7.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>regarima</span>, which <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span>
 </div><div class='img'><img src='plot-8.png' alt='' width='700' height='433' /></div><div class='input'>
@@ -257,8 +267,8 @@
 </div><div class='img'><img src='plot-10.png' alt='' width='700' height='433' /></div><div class='input'>
   <span class='co'># Final</span>
 <span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>final</span><span class='op'>)</span> <span class='co'># 2 graphics are plotted by default</span>
-</div><div class='img'><img src='plot-11.png' alt='' width='700' height='433' /></div><div class='img'><img src='plot-12.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># To only plot one graphic (here raw data, seasonal adjusted data and trend),</span>
-<span class='co'># changing the last date and the title</span>
+</div><div class='img'><img src='plot-11.png' alt='' width='700' height='433' /></div><div class='img'><img src='plot-12.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># To only plot one graphic (here the raw data, the seasonally adjusted data and the trend),</span>
+<span class='co'># To change the last date and the title</span>
 <span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>final</span>, last_date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2000</span>, <span class='fl'>1</span><span class='op'>)</span>,
      caption <span class='op'>=</span> <span class='st'>"Results"</span>, type_chart <span class='op'>=</span> <span class='st'>"sa-trend"</span><span class='op'>)</span>
 </div><div class='img'><img src='plot-13.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># }</span>

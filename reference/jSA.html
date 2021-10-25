@@ -48,7 +48,7 @@
 
 <meta property="og:title" content="Functions around 'jSA' objects — jSA" />
 <meta property="og:description" content="get_dictionary returns the indicators that can be extracted from &quot;jSA&quot; objects,
-get_indicators extract a list of indicators and
+get_indicators extracts a list of indicators
 jSA2R returns the corresponding &quot;SA&quot;." />
 <meta property="og:image" content="/logo.svg" />
 
@@ -161,7 +161,7 @@ jSA2R returns the corresponding &quot;SA&quot;." />
 
     <div class="ref-description">
     <p><code>get_dictionary</code> returns the indicators that can be extracted from <code>"jSA"</code> objects,
-<code>get_indicators</code> extract a list of indicators and
+<code>get_indicators</code> extracts a list of indicators
 <code>jSA2R</code> returns the corresponding <code>"SA"</code>.</p>
     </div>
 
@@ -186,27 +186,29 @@ jSA2R returns the corresponding &quot;SA&quot;." />
     </tr>
     <tr>
       <th>userdefined</th>
-      <td><p>userdefined vector with characters for additional output variables (see <code><a href='user_defined_variables.html'>user_defined_variables</a></code>). Only used for <code>"SA"</code> objects.</p></td>
+      <td><p>a userdefined vector containing the names of additional output variables (see <code><a href='user_defined_variables.html'>user_defined_variables</a></code>).
+Only used for <code>"SA"</code> objects.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>get_dictionary</code> a vector of characters,
+    <p><code>get_dictionary</code> returns a vector of characters,
 <code>get_indicators</code> returns a list containing the indicators that are extracted,
 <code>jSA2R</code> returns a <code>"SA"</code> or a <code>"regarima"</code> object and
 <code>get_jspec</code> returns a Java object.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>A <code>"jSA"</code> object is a list with three elements:</p><ul>
-<li><p><code>"result"</code>: the Java object with the results of a seasonal adjustment or a pre-adjustment method.</p></li>
-<li><p><code>"spec"</code>: the Java object with the specification of a seasonal adjustment or a pre-adjustment method.</p></li>
-<li><p><code>"dictionary"</code>: the Java object with dictionnary of a seasonal adjustment or a pre-adjustment method. In particular, it contains all the user-defined regressors.</p></li>
+    <p>A <code>"jSA"</code> object is a list of three elements:</p><ul>
+<li><p><code>"result"</code>: the Java object containing the results of a seasonal adjustment or a pre-adjustment method.</p></li>
+<li><p><code>"spec"</code>: the Java object containing the specification of a seasonal adjustment or a pre-adjustment method.</p></li>
+<li><p><code>"dictionary"</code>: the Java object containing the dictionary of a seasonal adjustment or a pre-adjustment method.
+In particular, it contains all the user-defined regressors.</p></li>
 </ul>
 
 <p><code>get_dictionary</code> returns the list of indicators that can be extracted from a <code>jSA</code> object by the function <code>get_indicators</code>.</p>
-<p><code>jSA2R</code> returns the corresponding formatted seasonal adjustment (<code>"SA"</code> object) or RegARIMA (<code>"regarima"</code> object) model.</p>
-<p><code>get_jspec</code> returns the Java object that contains the specification from an object
+<p><code>jSA2R</code> returns the corresponding formatted seasonally adjusted (<code>"SA"</code> object) or RegARIMA (<code>"regarima"</code> object) model.</p>
+<p><code>get_jspec</code> returns the Java object that contains the specification of an object. Such object can be of type
 <code>"jSA"</code>, <code>"X13"</code>, <code>"TRAMO_SEATS"</code> or <code>"sa_item"</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -689,7 +691,7 @@ jSA2R returns the corresponding &quot;SA&quot;." />
 #&gt; 2019   2.82444428  -4.53979302
 #&gt; 2020   2.63661191  -5.03889824
 #&gt; </div><div class='input'>
-<span class='co'># To convert to the R object</span>
+<span class='co'># To convert the Java object to an R object</span>
 <span class='fu'>jSA2R</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='font-weight: bold; text-decoration: underline;'>RegARIMA</span>
 #&gt; y = regression model + arima (2, 1, 1, 0, 1, 1)
@@ -809,7 +811,8 @@ jSA2R returns the corresponding &quot;SA&quot;." />
 #&gt;  f-test on i (td)                       0.993
 #&gt; 
 #&gt; 
-#&gt; <span style='font-weight: bold; text-decoration: underline;'>Additional output variables</span></div></pre>
+#&gt; <span style='font-weight: bold; text-decoration: underline;'>Additional output variables</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

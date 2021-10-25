@@ -47,8 +47,11 @@
 
 
 <meta property="og:title" content="RegARIMA model, pre-adjustment in X13 and TRAMO-SEATS — regarima" />
-<meta property="og:description" content="regarima/regarima_x13/regarima_tramoseats decomposes the time series in a linear deterministic component and in a stochastic component. The deterministic part of the series can contain outliers, calendar effects and regression effects. The stochastic part is defined by a seasonal multiplicative ARIMA model, as discussed by BOX, G.E.P., and JENKINS, G.M. (1970).
-jregarima/jregarima_x13/jregarima_tramoseats does the same computation but returns the Java objects without formatting the output" />
+<meta property="og:description" content="The regarima/regarima_x13/regarima_tramoseats functions decompose the input time series in a linear deterministic component
+and in a stochastic component. The deterministic part of the series can contain outliers, calendar effects and regression effects.
+The stochastic part is defined by a seasonal multiplicative ARIMA model, as discussed by BOX, G.E.P., and JENKINS, G.M. (1970).
+The jregarima/jregarima_x13/jregarima_tramoseats functions do the same computation but return the Java objects instead of
+a formatted output." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -159,8 +162,11 @@ jregarima/jregarima_x13/jregarima_tramoseats does the same computation but retur
     </div>
 
     <div class="ref-description">
-    <p><code>regarima/regarima_x13/regarima_tramoseats</code> decomposes the time series in a linear deterministic component and in a stochastic component. The deterministic part of the series can contain outliers, calendar effects and regression effects. The stochastic part is defined by a seasonal multiplicative ARIMA model, as discussed by BOX, G.E.P., and JENKINS, G.M. (1970).
-<code>jregarima/jregarima_x13/jregarima_tramoseats</code> does the same computation but returns the Java objects without formatting the output</p>
+    <p>The <code>regarima/regarima_x13/regarima_tramoseats</code> functions decompose the input time series in a linear deterministic component
+and in a stochastic component. The deterministic part of the series can contain outliers, calendar effects and regression effects.
+The stochastic part is defined by a seasonal multiplicative ARIMA model, as discussed by BOX, G.E.P., and JENKINS, G.M. (1970).
+The <code>jregarima/jregarima_x13/jregarima_tramoseats</code> functions do the same computation but return the Java objects instead of
+a formatted output.</p>
     </div>
 
     <pre class="usage"><span class='fu'>jregarima</span><span class='op'>(</span><span class='va'>series</span>, spec <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>
@@ -190,76 +196,109 @@ jregarima/jregarima_x13/jregarima_tramoseats does the same computation but retur
     </tr>
     <tr>
       <th>spec</th>
-      <td><p>model specification. For the function:</p><ul>
-<li><p><code>regarima</code>, object of class <code>c("regarima_spec","X13") or c("regarima_spec","TRAMO_SEATS")</code>).
-See functions <code><a href='regarima_spec_x13.html'>regarima_spec_x13</a> and <a href='regarima_spec_tramoseats.html'>regarima_spec_tramoseats</a></code>.</p></li>
-<li><p><code>regarima_x13</code>, predefined X13 'JDemetra+' model specification (see <em>Details</em>). The default is "RG5c".</p></li>
-<li><p><code>regarima_tramoseats</code>, predefined TRAMO-SEATS 'JDemetra+' model specification (see <em>Details</em>). The default is "TRfull".</p></li>
+      <td><p>the model specification. For the function:</p><ul>
+<li><p><code>regarima</code>: an object of class <code>c("regarima_spec","X13") or c("regarima_spec","TRAMO_SEATS")</code>.
+See the functions <code><a href='regarima_spec_x13.html'>regarima_spec_x13</a> and <a href='regarima_spec_tramoseats.html'>regarima_spec_tramoseats</a></code>.</p></li>
+<li><p><code>regarima_x13</code>: the name of a predefined X13 'JDemetra+' model specification (see <em>Details</em>). The default value is "RG5c".</p></li>
+<li><p><code>regarima_tramoseats</code>:the name of a predefined TRAMO-SEATS 'JDemetra+' model specification (see <em>Details</em>).
+The default value is "TRfull".</p></li>
 </ul></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>jregarima/jregarima_x13/jregarima_tramoseats</code> return a <code><a href='jSA.html'>jSA</a></code> object. It contains the Java objects of the result of the preadjustment method without any formatting. Therefore the computation is faster than with <code>regarima/regarima_x13/regarima_tramoseats</code>. The results can the seasonal adjustment can be extract by <code><a href='jSA.html'>get_indicators</a></code>.</p>
-<p><code>regarima/regarima_x13/regarima_tramoseats</code> return an object of class <code>"regarima"</code> and sub-class <code>"X13"</code> or <code>"TRAMO_SEATS"</code>. <code>regarima_x13</code> returns an object of class <code><a href='https://rdrr.io/r/base/c.html'>c("regarima","X13")</a></code> and <code>regarima_tramoseats</code> an object of class <code><a href='https://rdrr.io/r/base/c.html'>c("regarima","TRAMO_SEATS")</a></code>.
-For the function <code>regarima</code>, the sub-class of the object depends on the used method that is defined by the class of the <code>spec</code> object.</p>
+    <p>The <code>jregarima/jregarima_x13/jregarima_tramoseats</code> functions return a <code><a href='jSA.html'>jSA</a></code> object
+that contains the result of the pre-adjustment method without any formatting. Therefore, the computation
+is faster than with the <code>regarima/regarima_x13/regarima_tramoseats</code> functions.
+The results of the seasonal adjustment can be extracted with the function <code><a href='jSA.html'>get_indicators</a></code>.</p>
+<p>The <code>regarima/regarima_x13/regarima_tramoseats</code> functions return an object of class <code>"regarima"</code>
+and sub-class <code>"X13"</code> or <code>"TRAMO_SEATS"</code>.
+<code>regarima_x13</code> returns an object of class <code><a href='https://rdrr.io/r/base/c.html'>c("regarima","X13")</a></code> and <code>regarima_tramoseats</code>,
+an object of class <code><a href='https://rdrr.io/r/base/c.html'>c("regarima","TRAMO_SEATS")</a></code>.
+For the function <code>regarima</code>, the sub-class of the object depends on the used method that is defined by
+the <code>spec</code> object class.</p>
 <p>An object of class <code>"regarima"</code> is a list containing the following components:</p>
-<dt>specification</dt><dd><p>list with the model specification as defined by the <code>spec</code> argument. See also Value of the <code><a href='regarima_spec_x13.html'>regarima_spec_x13</a></code> and  <code><a href='regarima_spec_tramoseats.html'>regarima_spec_tramoseats</a></code> functions.</p></dd>
+<dt>specification</dt><dd><p>a list with the model specification as defined by the <code>spec</code> argument.
+See also the Value of the <code><a href='regarima_spec_x13.html'>regarima_spec_x13</a></code> and  <code><a href='regarima_spec_tramoseats.html'>regarima_spec_tramoseats</a></code> functions.</p></dd>
 
-<dt>arma</dt><dd><p>vector with the orders of the autoregressive (AR), moving average (MA), seasonal AR and seasonal MA processes, as well as with the regular and seasonal differencing orders (P,D,Q) (BP,BD,BQ).</p></dd>
+<dt>arma</dt><dd><p>a vector containing the orders of the autoregressive (AR), moving average (MA), seasonal AR and seasonal MA processes,
+as well as the regular and seasonal differencing orders (P,D,Q) (BP,BD,BQ).</p></dd>
 
-<dt>arima.coefficients</dt><dd><p>matrix with the regular and seasonal AR and MA coefficients. The matrix contains the estimated coefficients, standard errors and t-statistics values. The estimated coefficients can be also extracted with the function <code><a href='https://rdrr.io/r/stats/coef.html'>coef</a></code> (the output includes also the regression coefficients).</p></dd>
+<dt>arima.coefficients</dt><dd><p>a matrix containing the estimated regular and seasonal AR and MA coefficients, as well as
+the associated standard errors and t-statistics values. The estimated coefficients can be also extracted
+with the function <code><a href='https://rdrr.io/r/stats/coef.html'>coef</a></code> (whose output also includes the regression coefficients).</p></dd>
 
-<dt>regression.coefficients</dt><dd><p>matrix with the regression variables (i.e.: mean, calendar effect, outliers and user-defined regressors) coefficients. The matrix contains the estimated coefficients, standard errors and t-statistics values. The estimated coefficients can be also extracted with the function <code><a href='https://rdrr.io/r/stats/coef.html'>coef</a></code> (output includes also the arima coefficients).</p></dd>
+<dt>regression.coefficients</dt><dd><p>a matrix containing the estimated regression variables (i.e.: mean, calendar effect, outliers
+and user-defined regressors) coefficients, as welm as the associated standard errors and t-statistics values.
+The estimated coefficients can be also extracted with the function <code><a href='https://rdrr.io/r/stats/coef.html'>coef</a></code> (whose output also includes
+the arima coefficients).</p></dd>
 
-<dt>loglik</dt><dd><p>matrix containing the log-likelihood of the RegARIMA model as well as the associated model selection criteria statistics (AIC, AICC, BIC and BICC) and parameters (<code>np</code> = number of parameters in the likelihood, <code>neffectiveobs</code> = number of effective observations in the likelihood). These statistics can be also extracted with the function <code><a href='https://rdrr.io/r/stats/logLik.html'>logLik</a></code>.</p></dd>
+<dt>loglik</dt><dd><p>a matrix containing the log-likelihood of the RegARIMA model as well as the associated model selection criteria statistics
+(AIC, AICC, BIC and BICC) and parameters (<code>np</code> = number of parameters in the likelihood, <code>neffectiveobs</code> = number
+of effective observations in the likelihood). These statistics can also be extracted with the function <code><a href='https://rdrr.io/r/stats/logLik.html'>logLik</a></code>.</p></dd>
 
-<dt>model</dt><dd><p>list containing the information on the model specification after its estimation (<code>spec_rslt</code>), as well as the decomposed elements of the input series (ts matrix, <code>effects</code>). The model specification includes the information on the estimation method (<code>Model</code>) and time span (<code>T.span</code>), whether the original series was log transformed (<code>Log transformation</code>) and details on the regression part of the RegARIMA model; i.e. if it includes a <code>Mean</code>, <code>Trading days</code> effects (if yes, it provides the number of regressors), <code>Leap year</code> effect, <code>Easter</code> effect and whether outliers were detected (<code>Outliers</code>; if yes, it provides the number of outliers). The decomposed elements of the input series contain the linearised series (<code>y_lin</code>) and the deterministic components; i.e.: trading days effect (<code>tde</code>), Easter effect (<code>ee</code>), other moving holidays effect (<code>omhe</code>) and outliers effect (total - <code>out</code>, related to irregular - <code>out_i</code>, related to trend - <code>out_t</code>, related to seasonal - <code>out_s</code>).</p></dd>
+<dt>model</dt><dd><p>a list containing information on the model specification after its estimation (<code>spec_rslt</code>), as well as
+the decomposed elements of the input series (ts matrix, <code>effects</code>). The model specification includes information on the estimation method
+(<code>Model</code>) and time span (<code>T.span</code>), whether the original series was log transformed (<code>Log transformation</code>)
+and details on the regression part of the RegARIMA model i.e. if it includes a <code>Mean</code>, <code>Trading days</code> effects
+(if so, it provides the number of regressors), <code>Leap year</code> effect, <code>Easter</code> effect and whether outliers were detected
+(<code>Outliers</code> (if so, it provides the number of outliers). The decomposed elements of the input series contain the linearised series
+(<code>y_lin</code>) and the deterministic components i.e.: trading days effect (<code>tde</code>), Easter effect (<code>ee</code>), other moving holidays effect
+(<code>omhe</code>) and outliers effect (total - <code>out</code>, related to irregular - <code>out_i</code>, related to trend - <code>out_t</code>,
+related to seasonal - <code>out_s</code>).</p></dd>
 
 <dt>residuals</dt><dd><p>the residuals (time series). They can be also extracted with the function <code><a href='https://rdrr.io/r/stats/residuals.html'>residuals</a></code>.</p></dd>
 
-<dt>residuals.stat</dt><dd><p>List containing statistics on the RegARIMA residuals. It provides residuals standard error (<code>st.error</code>) and results for the tests on the normality, independence and linearity of the residuals (<code>tests</code>) - object of class <code><a href='https://rdrr.io/r/base/c.html'>c("regarima_rtests","data.frame")</a></code>.</p></dd>
+<dt>residuals.stat</dt><dd><p>a list containing statistics on the RegARIMA residuals. It provides the residuals standard error (<code>st.error</code>)
+and the results of normality, independence and linearity of the residuals (<code>tests</code>) - object of class <code><a href='https://rdrr.io/r/base/c.html'>c("regarima_rtests","data.frame")</a></code>.</p></dd>
 
-<dt>forecast</dt><dd><p>ts matrix containing the forecast of the original series (<code>fcst</code>) and it's standard error (<code>fcsterr</code>).</p></dd>
+<dt>forecast</dt><dd><p>a ts matrix containing the forecast of the original series (<code>fcst</code>) and its standard error (<code>fcsterr</code>).</p></dd>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>In the X13 and TRAMO-SEATS seasonal adjustment the first step consists of pre-adjusting the original series with a RegARIMA model, where the original series is corrected for any deterministic effects and missing observations. This step is also referred as linearization of the original series.</p>
-<p>The RegARIMA model (model with ARIMA errors) is specified as below.</p>
-<p>$$z_t=y_t\beta+x_t$$</p>
+    <p>When seasonally adjusting with X13 and TRAMO-SEATS, the first step consists in pre-adjusting the original series with a RegARIMA model,
+where the original series is corrected for any deterministic effects and missing observations.
+This step is also referred to as the linearization of the original series.</p>
+<p>The RegARIMA model (model with ARIMA errors) is specified as such:</p>
+<p>$$z_t = y_t\beta + x_t$$</p>
 <p>where:</p><ul>
-<li><p>\(z_t\) - is the original series;</p></li>
-<li><p>\(\beta = (\beta_1,...,\beta_n)\) - a vector of regression coefficients;</p></li>
-<li><p>\(y_t = (y_{1t},...,y_{nt})\) - \(n\) regression variables (outliers, calendar effects, user-defined variables);</p></li>
-<li><p>\(x_t\) - a disturbance that follows the general ARIMA process:
-\(\phi(B)\delta(B)x_t=\theta(B)a_t\); \(\phi(B), \delta(B)\) and \(\theta(B)\) are the finite polynomials in \(B\); \(a_t\) is a white-noise variable with zero mean and a constant variance.</p></li>
+<li><p>\(z_t\) is the original series;</p></li>
+<li><p>\(\beta = (\beta_1,...,\beta_n)\) is a vector of regression coefficients;</p></li>
+<li><p>\(y_t = (y_{1t},...,y_{nt})\) are \(n\) regression variables (outliers, calendar effects, user-defined variables);</p></li>
+<li><p>\(x_t\) is a disturbance that follows the general ARIMA process:
+\(\phi(B)\delta(B)x_t = \theta(B)a_t\); where \(\phi(B), \delta(B)\) and \(\theta(B)\) are finite polynomials in \(B\)
+and \(a_t\) is a white noise variable with zero mean and a constant variance.</p></li>
 </ul>
 
-<p>The polynomial \(\phi(B)\) is a stationary autoregressive (AR) polynomial in \(B\), which is a product of the stationary regular AR polynomial in \(B\) and the stationary seasonal polynomial in \(B^s\):</p>
+<p>The polynomial \(\phi(B)\) is a stationary autoregressive (AR) polynomial in \(B\),
+which is a product of the stationary regular AR polynomial in \(B\) and the stationary seasonal polynomial
+in \(B^s\):</p>
 <p>$$\phi(B)=\phi_p(B)\Phi_{bp}(B^s)=(1+\phi_1B+...+\phi_pB^p)(1+\Phi_1B^s+...+\Phi_{bp}B^{bps})$$</p>
 <p>where:</p><ul>
-<li><p>\(p\) - number of regular AR terms (here and in 'JDemetra+' \(p \le 3\));</p></li>
-<li><p>\(bp\) - number of seasonal AR terms (here and in 'JDemetra+' \(bp \le 1\));</p></li>
-<li><p>\(s\) - number of observations per year (frequency of the time series).</p></li>
+<li><p>\(p\) is the number of regular AR terms (here and in 'JDemetra+', \(p \le 3\));</p></li>
+<li><p>\(bp\) is the number of seasonal AR terms (here and in 'JDemetra+', \(bp \le 1\));</p></li>
+<li><p>\(s\) is the  number of observations per year (ie. The time series frequency).</p></li>
 </ul>
 
-<p>The polynomial \(\theta(B)\) is an invertible moving average (MA) polynomial in \(B\), which is a product of the invertible regular MA polynomial in \(B\) and the invertible seasonal MA polynomial in \(B^s\):</p>
+<p>The polynomial \(\theta(B)\) is an invertible moving average (MA) polynomial in \(B\),
+which is a product of the invertible regular MA polynomial in \(B\) and the invertible seasonal MA polynomial in \(B^s\):</p>
 <p>$$\theta(B)=\theta_q(B)\Theta_{bq}(B^s)=(1+\theta_1B+...+\theta_qB^q)(1+\Theta_1B^s+...+\Theta_{bq}B^{bqs})$$</p>
 <p>where:</p><ul>
-<li><p>\(q\) - number of regular MA terms (here and in 'JDemetra+' \(q \le 3\));</p></li>
-<li><p>\(bq\) - number of seasonal MA terms (here and in 'JDemetra+' \(bq \le 1\));</p></li>
+<li><p>\(q\) is the number of regular MA terms (here and in 'JDemetra+', \(q \le 3\));</p></li>
+<li><p>\(bq\) is the number of seasonal MA terms (here and in 'JDemetra+', \(bq \le 1\)).</p></li>
 </ul>
 
 <p>The polynomial \(\delta(B)\) is the non-stationary AR polynomial in \(B\) (unit roots):</p>
-<p>$$\delta(B)=(1-B)^d(1-B^s)^{d_s}$$</p>
+<p>$$\delta(B) = (1-B)^d(1-B^s)^{d_s}$$</p>
 <p>where:</p><ul>
-<li><p>\(d\) - regular differencing order (here and in 'JDemetra+' \(d \le 1\));</p></li>
-<li><p>\(d_s\) - seasonal differencing order (here and in 'JDemetra+' \(d_s \le 1\));</p></li>
+<li><p>\(d\) is the regular differencing order (here and in 'JDemetra+', \(d \le 1\));</p></li>
+<li><p>\(d_s\) is the seasonal differencing order (here and in 'JDemetra+', \(d_s \le 1\)).</p></li>
 </ul>
 
-<p>Notations used for AR and MA processes, model denoted as ARIMA \((P,D,Q)(BP,BD,BQ)\), are consistent with those in 'JDemetra+'.</p>
-<p>As regards the available predefined 'JDemetra+' X13 and TRAMO-SEATS model specifications, they are described in the tables below.</p>
+<p>NB. The notations used for AR and MA processes, as well as the model denoted as ARIMA \((P,D,Q)(BP,BD,BQ)\),
+are consistent with those in 'JDemetra+'.</p>
+<p>The available predefined 'JDemetra+' X13 and TRAMO-SEATS model specifications are described in the tables below:</p>
 <p><strong>X13:</strong></p><table class='table'>
 <tr><td><strong>Identifier</strong> |</td><td><strong>Log/level detection</strong> |</td><td><strong>Outliers detection</strong> |</td><td><strong>Calendar effects</strong> |</td><td><strong>ARIMA</strong></td><td>RG0 |</td><td><em>NA</em> |</td></tr>
 <tr><td><em>NA</em> |</td><td><em>NA</em> |</td><td>Airline(+mean)</td><td>RG1 |</td><td>automatic |</td><td>AO/LS/TC  |</td><td><em>NA</em> |</td></tr>

@@ -47,8 +47,8 @@
 
 
 <meta property="og:title" content="Get objects inside a workspace or multiprocessing — get_object" />
-<meta property="og:description" content="Generics functions to get all (get_all_objects()) multiprocessing (respectively sa_item)
-from a workspace (respectively multiprocessing)  or to get a given one (get_object()) ." />
+<meta property="og:description" content="Generic functions to retreive all (get_all_objects()) multiprocessing (respectively sa_item)
+from a workspace (respectively multiprocessing) or to retreive a single one (get_object()) ." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -159,8 +159,8 @@ from a workspace (respectively multiprocessing)  or to get a given one (get_obje
     </div>
 
     <div class="ref-description">
-    <p>Generics functions to get all (<code>get_all_objects()</code>) <code>multiprocessing</code> (respectively <code>sa_item</code>)
-from a <code>workspace</code> (respectively <code>multiprocessing</code>)  or to get a given one (<code>get_object()</code>) .</p>
+    <p>Generic functions to retreive all (<code>get_all_objects()</code>) <code>multiprocessing</code> (respectively <code>sa_item</code>)
+from a <code>workspace</code> (respectively <code>multiprocessing</code>) or to retreive a single one (<code>get_object()</code>) .</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_object</span><span class='op'>(</span><span class='va'>x</span>, pos <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
@@ -172,7 +172,7 @@ from a <code>workspace</code> (respectively <code>multiprocessing</code>)  or to
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>the object where to extract the <code>multiprocessing</code> or the <code>sa_item</code>.</p></td>
+      <td><p>the object to store the extracted <code>multiprocessing</code> or <code>sa_item</code>.</p></td>
     </tr>
     <tr>
       <th>pos</th>
@@ -186,7 +186,7 @@ from a <code>workspace</code> (respectively <code>multiprocessing</code>)  or to
 of objects of class <code>multiprocessing</code> or <code>sa_item</code> (for <code>get_all_objects()</code>).</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other functions to get informations from a workspace, multiprocessing or sa_item: <code><a href='count.html'>count</a></code>, <code><a href='get_model.html'>get_model</a></code>, <code><a href='get_name.html'>get_name</a></code>, <code><a href='get_ts.html'>get_ts</a></code>.</p></div>
+    <div class='dont-index'><p>Other functions to retrieve informations from a workspace, multiprocessing or sa_item: <code><a href='count.html'>count</a></code>, <code><a href='get_model.html'>get_model</a></code>, <code><a href='get_name.html'>get_name</a></code>, <code><a href='get_ts.html'>get_ts</a></code>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
@@ -197,9 +197,9 @@ of objects of class <code>multiprocessing</code> or <code>sa_item</code> (for <c
 <span class='va'>mp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='new_workspace.html'>new_multiprocessing</a></span><span class='op'>(</span><span class='va'>wk</span>, <span class='st'>"sa1"</span><span class='op'>)</span>
 <span class='fu'><a href='add_sa_item.html'>add_sa_item</a></span><span class='op'>(</span><span class='va'>wk</span>, <span class='st'>"sa1"</span>, <span class='va'>sa_x13</span>, <span class='st'>"X13"</span><span class='op'>)</span>
 
-<span class='co'># Other way to get the multiprocessing:</span>
+<span class='co'># A way to retrieve the multiprocessing:</span>
 <span class='va'>mp</span> <span class='op'>&lt;-</span> <span class='fu'>get_object</span><span class='op'>(</span><span class='va'>wk</span>, <span class='fl'>1</span><span class='op'>)</span>
-<span class='co'># To get the sa_item object:</span>
+<span class='co'># And the sa_item object:</span>
 <span class='va'>sa_item</span> <span class='op'>&lt;-</span> <span class='fu'>get_object</span><span class='op'>(</span><span class='va'>mp</span>, <span class='fl'>1</span><span class='op'>)</span>
 <span class='co'># }</span>
 </div></pre>

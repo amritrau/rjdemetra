@@ -47,7 +47,7 @@
 
 
 <meta property="og:title" content="Get the input raw time series — get_ts" />
-<meta property="og:description" content="Generics functions to get the input raw time series of a workspace, multiprocessing,
+<meta property="og:description" content="Generic functions to retrieve the input raw time series of a workspace, multiprocessing,
 sa_item or SA object." />
 <meta property="og:image" content="/logo.svg" />
 
@@ -159,7 +159,7 @@ sa_item or SA object." />
     </div>
 
     <div class="ref-description">
-    <p>Generics functions to get the input raw time series of a <code>workspace</code>, <code>multiprocessing</code>,
+    <p>Generic functions to retrieve the input raw time series of a <code>workspace</code>, <code>multiprocessing</code>,
 <code>sa_item</code> or <code>SA</code> object.</p>
     </div>
 
@@ -170,7 +170,7 @@ sa_item or SA object." />
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>the object where to get the time series.</p></td>
+      <td><p>the object from which to retrieve the time series.</p></td>
     </tr>
     </table>
 
@@ -178,15 +178,15 @@ sa_item or SA object." />
 
     <p><code>get_ts()</code> returns a <code><a href='https://rdrr.io/r/stats/ts.html'>ts</a></code> object or list of <code><a href='https://rdrr.io/r/stats/ts.html'>ts</a></code> objects:</p><ul>
 <li><p>if <code>x</code> is a <code>sa_item</code> or a <code>SA</code> object, <code>get_ts(x)</code> returns a single <code>ts</code> object;</p></li>
-<li><p>if <code>x</code> is a <code>multiprocessing</code> object, <code>get_ts(x)</code> returns list of length the number
- of sa_items, each a <code>ts</code> object;</p></li>
-<li><p>if <code>x</code> is a <code>workspace</code> object, <code>get_ts(x)</code> returns list of length the number of multiprocessing,
- each element containing a list of <code>ts</code> object.</p></li>
+<li><p>if <code>x</code> is a <code>multiprocessing</code> object, <code>get_ts(x)</code> returns a list of length the number
+ of sa_items, each element being a <code>ts</code> object;</p></li>
+<li><p>if <code>x</code> is a <code>workspace</code> object, <code>get_ts(x)</code> returns a list of length the number of multiprocessings,
+ each element being a list of <code>ts</code> objects.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other functions to get informations from a workspace, multiprocessing or sa_item: <code><a href='count.html'>count</a></code>, <code><a href='get_model.html'>get_model</a></code>, <code><a href='get_name.html'>get_name</a></code>.</p></div>
+    <div class='dont-index'><p>Other functions to retrieve information from a workspace, multiprocessing or sa_item: <code><a href='count.html'>count</a></code>, <code><a href='get_model.html'>get_model</a></code>, <code><a href='get_name.html'>get_name</a></code>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
@@ -197,7 +197,7 @@ sa_item or SA object." />
 <span class='fu'><a href='add_sa_item.html'>add_sa_item</a></span><span class='op'>(</span><span class='va'>wk</span>, <span class='st'>"sa1"</span>, <span class='va'>sa_x13</span>, <span class='st'>"X13"</span><span class='op'>)</span>
 <span class='va'>sa_item</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_object.html'>get_object</a></span><span class='op'>(</span><span class='va'>mp</span>, <span class='fl'>1</span><span class='op'>)</span>
 
-  <span class='co'># Extracting from a SA:</span>
+  <span class='co'># Extracting the raw time series from an adjusted series:</span>
 <span class='fu'>get_ts</span><span class='op'>(</span><span class='va'>sa_x13</span><span class='op'>)</span> <span class='co'># Returns the ts object ipi_c_eu[, "FR"]</span>
 </div><div class='output co'>#&gt;        Jan   Feb   Mar   Apr   May   Jun   Jul   Aug   Sep   Oct   Nov   Dec
 #&gt; 1990  92.1  92.3 102.1  93.0  93.3 100.8  92.9  66.7  95.8 105.0  96.7  89.2
@@ -231,7 +231,7 @@ sa_item or SA object." />
 #&gt; 2018 101.8  98.6 112.9 103.0  98.7 112.8 106.6  82.6 104.7 116.0 109.6  97.6
 #&gt; 2019 103.8 102.0 111.6 107.2 105.2 106.0 109.8  78.8 109.0 116.5 104.0  97.8
 #&gt; 2020 101.0 100.1  91.8  66.7  73.7  98.2  97.4  71.7 104.7 106.7 101.6  96.6</div><div class='input'>
-  <span class='co'># Extracting from a sa_item:</span>
+  <span class='co'># Extracting the raw time series from a sa_item:</span>
 <span class='fu'>get_ts</span><span class='op'>(</span><span class='va'>sa_item</span><span class='op'>)</span> <span class='co'># Returns the ts object ipi_c_eu[, "FR"]</span>
 </div><div class='output co'>#&gt;        Jan   Feb   Mar   Apr   May   Jun   Jul   Aug   Sep   Oct   Nov   Dec
 #&gt; 1990  92.1  92.3 102.1  93.0  93.3 100.8  92.9  66.7  95.8 105.0  96.7  89.2
@@ -265,7 +265,7 @@ sa_item or SA object." />
 #&gt; 2018 101.8  98.6 112.9 103.0  98.7 112.8 106.6  82.6 104.7 116.0 109.6  97.6
 #&gt; 2019 103.8 102.0 111.6 107.2 105.2 106.0 109.8  78.8 109.0 116.5 104.0  97.8
 #&gt; 2020 101.0 100.1  91.8  66.7  73.7  98.2  97.4  71.7 104.7 106.7 101.6  96.6</div><div class='input'>
-  <span class='co'># Extracting from a multiprocessing:</span>
+  <span class='co'># Extracting all raw time series from a multiprocessing:</span>
 <span class='co'># Returns a list of length 1 named "X13" containing the ts object ipi_c_eu[, "FR"]:</span>
 <span class='fu'>get_ts</span><span class='op'>(</span><span class='va'>mp</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $X13
@@ -303,9 +303,9 @@ sa_item or SA object." />
 #&gt; 2020 101.0 100.1  91.8  66.7  73.7  98.2  97.4  71.7 104.7 106.7 101.6  96.6
 #&gt; </div><div class='input'>
 
-  <span class='co'># Extracting from a workspace:</span>
+  <span class='co'># Extracting all raw time series from a workspace:</span>
 <span class='co'># Returns a list of length 1 named "sa1" containing a list</span>
-<span class='co'># of length 1 named "X13" containing the ts object ipi_c_eu[, "FR"]</span>
+<span class='co'># of length 1 named "X13", containing the ts object ipi_c_eu[, "FR"]</span>
 <span class='fu'>get_ts</span><span class='op'>(</span><span class='va'>wk</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $sa1
 #&gt; $sa1$X13

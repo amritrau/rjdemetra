@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Access model specification, SA and pre-adjustment in X13 and TRAMO-SEATS — specification • RJDemetra</title>
+<title>Access a model specification, a SA or a pre-adjustment model in X13 and TRAMO-SEATS — specification • RJDemetra</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,9 @@
 
 
 
-<meta property="og:title" content="Access model specification, SA and pre-adjustment in X13 and TRAMO-SEATS — specification" />
-<meta property="og:description" content="Below functions access different parts of the final model specification as included in the &quot;SA&quot;, &quot;regarima&quot;, &quot;SA_spec&quot; and &quot;regarima_spec&quot; S3 class objects." />
+<meta property="og:title" content="Access a model specification, a SA or a pre-adjustment model in X13 and TRAMO-SEATS — specification" />
+<meta property="og:description" content="The following functions enable the access to different parts of the final model specification,
+as included in the &quot;SA&quot;, &quot;regarima&quot;, &quot;SA_spec&quot; and &quot;regarima_spec&quot; S3 class objects." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -152,13 +153,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Access model specification, SA and pre-adjustment in X13 and TRAMO-SEATS</h1>
+    <h1>Access a model specification, a SA or a pre-adjustment model in X13 and TRAMO-SEATS</h1>
     <small class="dont-index">Source: <a href='https://github.com/jdemetra/rjdemetra/blob/master/R/spec.R'><code>R/spec.R</code></a></small>
     <div class="hidden name"><code>specification.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Below functions access different parts of the final model specification as included in the <code>"SA", "regarima", "SA_spec"</code> and <code>"regarima_spec"</code> S3 class objects.</p>
+    <p>The following functions enable the access to different parts of the final model specification,
+as included in the <code>"SA", "regarima", "SA_spec"</code> and <code>"regarima_spec"</code> S3 class objects.</p>
     </div>
 
     <pre class="usage"><span class='fu'>s_estimate</span><span class='op'>(</span>object <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>
@@ -194,7 +196,10 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>object of one of the classes: <code><a href='https://rdrr.io/r/base/c.html'>c("SA","X13")</a></code>, <code><a href='https://rdrr.io/r/base/c.html'>c("SA","TRAMO_SEATS")</a></code>, <code><a href='https://rdrr.io/r/base/c.html'>c("SA_spec","X13")</a></code>, <code><a href='https://rdrr.io/r/base/c.html'>c("SA_spec","TRAMO_SEATS")</a></code>, <code><a href='https://rdrr.io/r/base/c.html'>c("regarima","X13")</a></code>, <code><a href='https://rdrr.io/r/base/c.html'>c("regarima","TRAMO_SEATS")</a></code>, <code><a href='https://rdrr.io/r/base/c.html'>c("regarima_spec","X13")</a></code>, <code><a href='https://rdrr.io/r/base/c.html'>c("regarima_spec","TRAMO_SEATS")</a></code>.</p></td>
+      <td><p>an object of one of the following classes: <code><a href='https://rdrr.io/r/base/c.html'>c("SA","X13")</a></code>,
+<code><a href='https://rdrr.io/r/base/c.html'>c("SA","TRAMO_SEATS")</a></code>, <code><a href='https://rdrr.io/r/base/c.html'>c("SA_spec","X13")</a></code>, <code><a href='https://rdrr.io/r/base/c.html'>c("SA_spec","TRAMO_SEATS")</a></code>,
+<code><a href='https://rdrr.io/r/base/c.html'>c("regarima","X13")</a></code>, <code><a href='https://rdrr.io/r/base/c.html'>c("regarima","TRAMO_SEATS")</a></code>, <code><a href='https://rdrr.io/r/base/c.html'>c("regarima_spec","X13")</a></code>,
+<code><a href='https://rdrr.io/r/base/c.html'>c("regarima_spec","TRAMO_SEATS")</a></code>.</p></td>
     </tr>
     </table>
 
@@ -203,12 +208,12 @@
     
 <ul>
 <li><p><code>s_estimate</code> returns a data.frame with the <em>estimate</em> variables</p></li>
-<li><p><code>s_transform</code> returns a data.frame with the <em>transform</em> varaibles</p></li>
+<li><p><code>s_transform</code> returns a data.frame with the <em>transform</em> variables</p></li>
 <li><p><code>s_usrdef</code> returns a data.frame with the <em>user-defined regressors</em> (outliers and variables) model specification, indicating if those variables are included in the model and if coefficients are pre-specified</p></li>
 <li><p><code>s_preOut</code> returns a data.frame with the <em>pre-specified outliers</em></p></li>
-<li><p><code>s_preVar</code> returns a list with the information on the user-defined variables, including: <code>series</code> - the time series and <code>description</code> - data.frame with the variable type and coefficients</p></li>
+<li><p><code>s_preVar</code> returns a list with information on the user-defined variables, including: <code>series</code> - the time series and <code>description</code> - data.frame with the variable type and coefficients</p></li>
 <li><p><code>s_td</code> returns a data.frame with the <em>trading.days</em> variables</p></li>
-<li><p><code>s_easter</code> returns a data.frame with the <em>easter</em> variables</p></li>
+<li><p><code>s_easter</code> returns a data.frame with the <em>easter</em> variable</p></li>
 <li><p><code>s_out</code> returns a data.frame with the <em>outliers</em> detection variables</p></li>
 <li><p><code>s_arima</code> returns a data.frame with the <em>arima</em> variables</p></li>
 <li><p><code>s_arimaCoef</code> returns a data.frame with the user-specified ARMA coefficients</p></li>
