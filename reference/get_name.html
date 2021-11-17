@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RJDemetra</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -106,13 +106,19 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="https://github.com/AQLT/rjwsacruncher">rjwsacruncher</a>
+    </li>
+    <li>
       <a href="https://github.com/AQLT/ggdemetra">ggdemetra</a>
     </li>
     <li>
       <a href="https://github.com/AQLT/rjdqa">rjdqa</a>
     </li>
     <li>
-      <a href="https://github.com/AQLT/rjwsacruncher">rjwsacruncher</a>
+      <a href="https://github.com/AQLT/rjdmarkdown">rjdmarkdown</a>
+    </li>
+    <li>
+      <a href="https://github.com/InseeFrLab/rjdworkspace">rjdworkspace</a>
     </li>
   </ul>
 </li>
@@ -180,42 +186,48 @@
     <div class='dont-index'><p>Other functions to retrieve information from a workspace, multiprocessing or sa_item: <code><a href='count.html'>count</a></code>, <code><a href='get_model.html'>get_model</a></code>, <code><a href='get_ts.html'>get_ts</a></code>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='va'>spec_x13</span> <span class='op'>&lt;-</span> <span class='fu'><a href='x13_spec.html'>x13_spec</a></span><span class='op'>(</span>spec <span class='op'>=</span> <span class='st'>"RSA5c"</span>, easter.enabled <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-<span class='va'>sa_x13</span> <span class='op'>&lt;-</span> <span class='fu'><a href='x13.html'>x13</a></span><span class='op'>(</span><span class='va'>ipi_c_eu</span><span class='op'>[</span>, <span class='st'>"FR"</span><span class='op'>]</span>, spec <span class='op'>=</span> <span class='va'>spec_x13</span><span class='op'>)</span>
-<span class='va'>spec_ts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='tramoseats_spec.html'>tramoseats_spec</a></span><span class='op'>(</span>spec <span class='op'>=</span> <span class='st'>"RSA5"</span><span class='op'>)</span>
-<span class='va'>sa_ts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='tramoseats.html'>tramoseats</a></span><span class='op'>(</span><span class='va'>ipi_c_eu</span><span class='op'>[</span>, <span class='st'>"FR"</span><span class='op'>]</span>, spec <span class='op'>=</span> <span class='va'>spec_ts</span><span class='op'>)</span>
-
-<span class='va'>wk</span> <span class='op'>&lt;-</span> <span class='fu'><a href='new_workspace.html'>new_workspace</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='va'>mp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='new_workspace.html'>new_multiprocessing</a></span><span class='op'>(</span><span class='va'>wk</span>, <span class='st'>"sa1"</span><span class='op'>)</span>
-<span class='fu'><a href='add_sa_item.html'>add_sa_item</a></span><span class='op'>(</span><span class='va'>wk</span>, <span class='st'>"sa1"</span>, <span class='va'>sa_x13</span>, <span class='st'>"X13"</span><span class='op'>)</span>
-<span class='fu'><a href='add_sa_item.html'>add_sa_item</a></span><span class='op'>(</span><span class='va'>wk</span>, <span class='st'>"sa1"</span>, <span class='va'>sa_ts</span>, <span class='st'>"TramoSeats"</span><span class='op'>)</span>
-
-<span class='va'>sa_item1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_object.html'>get_object</a></span><span class='op'>(</span><span class='va'>mp</span>, <span class='fl'>1</span><span class='op'>)</span>
-<span class='va'>sa_item2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_object.html'>get_object</a></span><span class='op'>(</span><span class='va'>mp</span>, <span class='fl'>2</span><span class='op'>)</span>
-
-<span class='fu'>get_name</span><span class='op'>(</span><span class='va'>sa_item1</span><span class='op'>)</span> <span class='co'># returns "X13"</span>
-</div><div class='output co'>#&gt; [1] "X13"</div><div class='input'><span class='fu'>get_name</span><span class='op'>(</span><span class='va'>sa_item2</span><span class='op'>)</span> <span class='co'># returns "TramoSeats"</span>
-</div><div class='output co'>#&gt; [1] "TramoSeats"</div><div class='input'>
-<span class='fu'>get_name</span><span class='op'>(</span><span class='va'>mp</span><span class='op'>)</span> <span class='co'># returns "sa1"</span>
-</div><div class='output co'>#&gt; [1] "sa1"</div><div class='input'>
-<span class='co'># To retrieve the name of every sa_item in a given multiprocessing:</span>
-<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='fu'><a href='get_object.html'>get_all_objects</a></span><span class='op'>(</span><span class='va'>mp</span><span class='op'>)</span>, <span class='va'>get_name</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;          X13   TramoSeats 
-#&gt;        "X13" "TramoSeats" </div><div class='input'>
-<span class='co'># To retrieve the name of every multiprocessing in a given workspace:</span>
-<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='fu'><a href='get_object.html'>get_all_objects</a></span><span class='op'>(</span><span class='va'>wk</span><span class='op'>)</span>, <span class='va'>get_name</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   sa1 
-#&gt; "sa1" </div><div class='input'>
-<span class='co'># To retrieve the name of every sa_item in a given workspace:</span>
-<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='fu'><a href='get_object.html'>get_all_objects</a></span><span class='op'>(</span><span class='va'>wk</span><span class='op'>)</span>,<span class='kw'>function</span><span class='op'>(</span><span class='va'>mp</span><span class='op'>)</span><span class='op'>{</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='fu'><a href='get_object.html'>get_all_objects</a></span><span class='op'>(</span><span class='va'>mp</span><span class='op'>)</span>, <span class='va'>get_name</span><span class='op'>)</span>
-<span class='op'>}</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $sa1
-#&gt;          X13   TramoSeats 
-#&gt;        "X13" "TramoSeats" 
-#&gt; </div><div class='input'><span class='co'># }</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='va'>spec_x13</span> <span class='op'>&lt;-</span> <span class='fu'><a href='x13_spec.html'>x13_spec</a></span><span class='op'>(</span>spec <span class='op'>=</span> <span class='st'>"RSA5c"</span>, easter.enabled <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>sa_x13</span> <span class='op'>&lt;-</span> <span class='fu'><a href='x13.html'>x13</a></span><span class='op'>(</span><span class='va'>ipi_c_eu</span><span class='op'>[</span>, <span class='st'>"FR"</span><span class='op'>]</span>, spec <span class='op'>=</span> <span class='va'>spec_x13</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>spec_ts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='tramoseats_spec.html'>tramoseats_spec</a></span><span class='op'>(</span>spec <span class='op'>=</span> <span class='st'>"RSA5"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>sa_ts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='tramoseats.html'>tramoseats</a></span><span class='op'>(</span><span class='va'>ipi_c_eu</span><span class='op'>[</span>, <span class='st'>"FR"</span><span class='op'>]</span>, spec <span class='op'>=</span> <span class='va'>spec_ts</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>wk</span> <span class='op'>&lt;-</span> <span class='fu'><a href='new_workspace.html'>new_workspace</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>mp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='new_workspace.html'>new_multiprocessing</a></span><span class='op'>(</span><span class='va'>wk</span>, <span class='st'>"sa1"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='add_sa_item.html'>add_sa_item</a></span><span class='op'>(</span><span class='va'>wk</span>, <span class='st'>"sa1"</span>, <span class='va'>sa_x13</span>, <span class='st'>"X13"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='add_sa_item.html'>add_sa_item</a></span><span class='op'>(</span><span class='va'>wk</span>, <span class='st'>"sa1"</span>, <span class='va'>sa_ts</span>, <span class='st'>"TramoSeats"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>sa_item1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_object.html'>get_object</a></span><span class='op'>(</span><span class='va'>mp</span>, <span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>sa_item2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_object.html'>get_object</a></span><span class='op'>(</span><span class='va'>mp</span>, <span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>get_name</span><span class='op'>(</span><span class='va'>sa_item1</span><span class='op'>)</span> <span class='co'># returns "X13"</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "X13"</span>
+<span class='r-in'><span class='fu'>get_name</span><span class='op'>(</span><span class='va'>sa_item2</span><span class='op'>)</span> <span class='co'># returns "TramoSeats"</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "TramoSeats"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>get_name</span><span class='op'>(</span><span class='va'>mp</span><span class='op'>)</span> <span class='co'># returns "sa1"</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "sa1"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># To retrieve the name of every sa_item in a given multiprocessing:</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='fu'><a href='get_object.html'>get_all_objects</a></span><span class='op'>(</span><span class='va'>mp</span><span class='op'>)</span>, <span class='va'>get_name</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          X13   TramoSeats </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        "X13" "TramoSeats" </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># To retrieve the name of every multiprocessing in a given workspace:</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='fu'><a href='get_object.html'>get_all_objects</a></span><span class='op'>(</span><span class='va'>wk</span><span class='op'>)</span>, <span class='va'>get_name</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   sa1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> "sa1" </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># To retrieve the name of every sa_item in a given workspace:</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='fu'><a href='get_object.html'>get_all_objects</a></span><span class='op'>(</span><span class='va'>wk</span><span class='op'>)</span>,<span class='kw'>function</span><span class='op'>(</span><span class='va'>mp</span><span class='op'>)</span><span class='op'>{</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='fu'><a href='get_object.html'>get_all_objects</a></span><span class='op'>(</span><span class='va'>mp</span><span class='op'>)</span>, <span class='va'>get_name</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $sa1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          X13   TramoSeats </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        "X13" "TramoSeats" </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='co'># }</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

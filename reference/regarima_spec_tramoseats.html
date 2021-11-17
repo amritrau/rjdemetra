@@ -82,7 +82,7 @@ a previous specification (c(&quot;regarima_spec&quot;,&quot;TRAMO_SEATS&quot;) o
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RJDemetra</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -108,13 +108,19 @@ a previous specification (c(&quot;regarima_spec&quot;,&quot;TRAMO_SEATS&quot;) o
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="https://github.com/AQLT/rjwsacruncher">rjwsacruncher</a>
+    </li>
+    <li>
       <a href="https://github.com/AQLT/ggdemetra">ggdemetra</a>
     </li>
     <li>
       <a href="https://github.com/AQLT/rjdqa">rjdqa</a>
     </li>
     <li>
-      <a href="https://github.com/AQLT/rjwsacruncher">rjwsacruncher</a>
+      <a href="https://github.com/AQLT/rjdmarkdown">rjdmarkdown</a>
+    </li>
+    <li>
+      <a href="https://github.com/InseeFrLab/rjdworkspace">rjdworkspace</a>
     </li>
   </ul>
 </li>
@@ -160,9 +166,9 @@ a previous specification (c(&quot;regarima_spec&quot;,&quot;TRAMO_SEATS&quot;) o
     </div>
 
     <div class="ref-description">
-    <p>Function to create (and/or modify) a <code><a href='https://rdrr.io/r/base/c.html'>c("regarima_spec","TRAMO_SEATS")</a></code> class object with the RegARIMA model specification
+    <p>Function to create (and/or modify) a <code>c("regarima_spec","TRAMO_SEATS")</code> class object with the RegARIMA model specification
 for the TRAMO-SEATS method. The object can be created from the name (<code>character</code>) of a predefined 'JDemetra+' model specification,
-a previous specification (<code><a href='https://rdrr.io/r/base/c.html'>c("regarima_spec","TRAMO_SEATS")</a></code> object) or a TRAMO-SEATS RegARIMA model (<code><a href='https://rdrr.io/r/base/c.html'>c("regarima","TRAMO_SEATS")</a></code>).</p>
+a previous specification (<code>c("regarima_spec","TRAMO_SEATS")</code> object) or a TRAMO-SEATS RegARIMA model (<code>c("regarima","TRAMO_SEATS")</code>).</p>
     </div>
 
     <pre class="usage"><span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span>
@@ -240,7 +246,7 @@ a previous specification (<code><a href='https://rdrr.io/r/base/c.html'>c("regar
     <tr>
       <th>spec</th>
       <td><p>the model specification. It can be the name (<code>character</code>) of a predefined 'JDemetra+' model specification
-(see <em>Details</em>), an object of class <code><a href='https://rdrr.io/r/base/c.html'>c("regarima_spec","TRAMO_SEATS")</a></code> or an object of class <code><a href='https://rdrr.io/r/base/c.html'>c("regarima", "TRAMO_SEATS")</a></code>.
+(see <em>Details</em>), an object of class <code>c("regarima_spec","TRAMO_SEATS")</code> or an object of class <code>c("regarima", "TRAMO_SEATS")</code>.
 The default is <code>"TRfull"</code>.</p></td>
     </tr>
     <tr>
@@ -593,7 +599,7 @@ in periods (positive values) or years (negative values). By default, the program
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list of class <code><a href='https://rdrr.io/r/base/c.html'>c("regarima_spec","TRAMO_SEATS")</a></code> with the following components, each referring to a different part
+    <p>A list of class <code>c("regarima_spec","TRAMO_SEATS")</code> with the following components, each referring to a different part
 of the RegARIMA model specification, mirroring the arguments of the function (for details, see the arguments description).
 Each lowest-level component (except the span, pre-specified outliers, user-defined variables and pre-specified ARMA coefficients)
 is structured within a data frame with columns denoting different variables of the model specification and rows referring to:
@@ -672,548 +678,556 @@ The matrix can be also accessed with the function <code><a href='specification.h
 <a href='https://ec.europa.eu/eurostat/cros/content/documentation_en'>https://ec.europa.eu/eurostat/cros/content/documentation_en</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='va'>myseries</span> <span class='op'>&lt;-</span> <span class='va'>ipi_c_eu</span><span class='op'>[</span>, <span class='st'>"FR"</span><span class='op'>]</span>
-<span class='va'>myspec1</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span>spec <span class='op'>=</span> <span class='st'>"TRfull"</span><span class='op'>)</span>
-<span class='va'>myreg1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>, spec <span class='op'>=</span> <span class='va'>myspec1</span><span class='op'>)</span>
-
- <span class='co'># To modify a pre-specified model specification</span>
-<span class='va'>myspec2</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span>spec <span class='op'>=</span> <span class='st'>"TRfull"</span>,
-             tradingdays.mauto <span class='op'>=</span> <span class='st'>"Unused"</span>,
-             tradingdays.option <span class='op'>=</span> <span class='st'>"WorkingDays"</span>,
-             easter.type <span class='op'>=</span> <span class='st'>"Standard"</span>,
-             automdl.enabled <span class='op'>=</span> <span class='cn'>FALSE</span>, arima.mu <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='va'>myreg2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>, spec <span class='op'>=</span> <span class='va'>myspec2</span><span class='op'>)</span>
-
- <span class='co'># To modify the model specification of a "regarima" object</span>
-<span class='va'>myspec3</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span><span class='va'>myreg1</span>,
-             tradingdays.mauto <span class='op'>=</span> <span class='st'>"Unused"</span>,
-             tradingdays.option <span class='op'>=</span> <span class='st'>"WorkingDays"</span>,
-             easter.type <span class='op'>=</span> <span class='st'>"Standard"</span>, automdl.enabled <span class='op'>=</span> <span class='cn'>FALSE</span>,
-             arima.mu <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='va'>myreg3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>, <span class='va'>myspec3</span><span class='op'>)</span>
-
- <span class='co'># To modify the model specification of a "regarima_spec" object</span>
-<span class='va'>myspec4</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span><span class='va'>myspec1</span>,
-             tradingdays.mauto <span class='op'>=</span> <span class='st'>"Unused"</span>,
-             tradingdays.option <span class='op'>=</span> <span class='st'>"WorkingDays"</span>,
-             easter.type <span class='op'>=</span> <span class='st'>"Standard"</span>,
-             automdl.enabled <span class='op'>=</span> <span class='cn'>FALSE</span>, arima.mu <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='va'>myreg4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>, <span class='va'>myspec4</span><span class='op'>)</span>
-
- <span class='co'># Pre-specified outliers</span>
-<span class='va'>myspec1</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span>spec <span class='op'>=</span> <span class='st'>"TRfull"</span>,
-             usrdef.outliersEnabled <span class='op'>=</span> <span class='cn'>TRUE</span>,
-             usrdef.outliersType <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"LS"</span>, <span class='st'>"LS"</span><span class='op'>)</span>,
-             usrdef.outliersDate <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"2008-10-01"</span> ,<span class='st'>"2003-01-01"</span><span class='op'>)</span>,
-             usrdef.outliersCoef <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10</span>, <span class='op'>-</span><span class='fl'>8</span><span class='op'>)</span>, transform.function <span class='op'>=</span> <span class='st'>"None"</span><span class='op'>)</span>
-<span class='fu'><a href='specification.html'>s_preOut</a></span><span class='op'>(</span><span class='va'>myspec1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   type       date coeff
-#&gt; 1   LS 2008-10-01    10
-#&gt; 2   LS 2003-01-01    -8</div><div class='input'><span class='va'>myreg1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>, <span class='va'>myspec1</span><span class='op'>)</span>
-<span class='va'>myreg1</span>
-</div><div class='output co'>#&gt; y = regression model + arima (2, 1, 0, 1, 1, 1)
-#&gt; Log-transformation: no
-#&gt; Coefficients:
-#&gt;           Estimate Std. Error
-#&gt; Phi(1)      0.4872      0.051
-#&gt; Phi(2)      0.2964      0.051
-#&gt; BPhi(1)    -0.2070      0.071
-#&gt; BTheta(1)  -0.8048      0.044
-#&gt; 
-#&gt;              Estimate Std. Error
-#&gt; Week days      0.6814      0.039
-#&gt; Leap year      1.9125      0.726
-#&gt; Easter [6]    -2.4901      0.461
-#&gt; TC (4-2020)  -22.4492      2.288
-#&gt; TC (3-2020)  -21.2013      2.296
-#&gt; AO (5-2011)   12.6414      1.908
-#&gt; LS (11-2008) -14.2909      1.954
-#&gt; 
-#&gt; Fixed outliers: 
-#&gt;              Coefficients
-#&gt; LS (10-2008)           10
-#&gt; LS (1-2003)            -8
-#&gt; 
-#&gt; 
-#&gt; Residual standard error: 2.421 on 347 degrees of freedom
-#&gt; Log likelihood = -831.3, aic =  1687 aicc =  1688, bic(corrected for length) = 1.949
-#&gt; </div><div class='input'><span class='fu'><a href='specification.html'>s_preOut</a></span><span class='op'>(</span><span class='va'>myreg1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   type       date coeff
-#&gt; 1   LS 2008-10-01    10
-#&gt; 2   LS 2003-01-01    -8</div><div class='input'>
-
- <span class='co'># User-defined variables</span>
-<span class='va'>var1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/ts.html'>ts</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>myseries</span><span class='op'>)</span><span class='op'>)</span><span class='op'>*</span><span class='fl'>10</span>, start <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/start.html'>start</a></span><span class='op'>(</span><span class='va'>myseries</span><span class='op'>)</span>,
-           frequency <span class='op'>=</span> <span class='fl'>12</span><span class='op'>)</span>
-<span class='va'>var2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/ts.html'>ts</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>myseries</span><span class='op'>)</span><span class='op'>)</span><span class='op'>*</span><span class='fl'>100</span>, start <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/start.html'>start</a></span><span class='op'>(</span><span class='va'>myseries</span><span class='op'>)</span>,
-           frequency <span class='op'>=</span> <span class='fl'>12</span><span class='op'>)</span>
-<span class='va'>var</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/ts.union.html'>ts.union</a></span><span class='op'>(</span><span class='va'>var1</span>, <span class='va'>var2</span><span class='op'>)</span>
-
-<span class='va'>myspec1</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span>spec <span class='op'>=</span> <span class='st'>"TRfull"</span>,
-            usrdef.varEnabled <span class='op'>=</span> <span class='cn'>TRUE</span>, usrdef.var <span class='op'>=</span> <span class='va'>var</span><span class='op'>)</span>
-<span class='fu'><a href='specification.html'>s_preVar</a></span><span class='op'>(</span><span class='va'>myspec1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $series
-#&gt;                 var1        var2
-#&gt; Jan 1990 -10.3377324  -88.564860
-#&gt; Feb 1990  -1.5597667    4.923707
-#&gt; Mar 1990  -0.4640064   18.556122
-#&gt; Apr 1990  -9.5362873  -60.865779
-#&gt; May 1990   4.1626080  -73.110285
-#&gt; Jun 1990   1.1402961  271.514421
-#&gt; Jul 1990   0.6391875 -133.938704
-#&gt; Aug 1990  -9.1933224  -64.601525
-#&gt; Sep 1990   9.0133529  -93.245461
-#&gt; Oct 1990  -7.9772830  -76.908693
-#&gt; Nov 1990   6.6822120   37.157978
-#&gt; Dec 1990   1.5521430   35.543278
-#&gt; Jan 1991   1.2868809  -98.399849
-#&gt; Feb 1991 -15.3306545   21.472959
-#&gt; Mar 1991   2.0236067   -8.008508
-#&gt; Apr 1991  -7.1753865 -142.236955
-#&gt; May 1991   3.6169476  110.814896
-#&gt; Jun 1991  13.9900429  107.847764
-#&gt; Jul 1991   3.7269896  -44.025034
-#&gt; Aug 1991 -15.6564429  -77.816901
-#&gt; Sep 1991  -0.5169454 -181.859001
-#&gt; Oct 1991   5.1408210 -112.408090
-#&gt; Nov 1991   5.4989952  106.052384
-#&gt; Dec 1991   8.6781691 -147.870016
-#&gt; Jan 1992   6.8436008 -155.156017
-#&gt; Feb 1992  -1.6267998   77.750668
-#&gt; Mar 1992 -17.8436472  106.844014
-#&gt; Apr 1992 -10.3714557  -18.358770
-#&gt; May 1992   8.3014772  155.824293
-#&gt; Jun 1992   6.0734694  -21.324238
-#&gt; Jul 1992  -1.2218636   93.053526
-#&gt; Aug 1992   9.3312514   41.081180
-#&gt; Sep 1992  -9.6127668 -127.984430
-#&gt; Oct 1992   2.5508171  -78.236663
-#&gt; Nov 1992  -5.4540157 -227.608345
-#&gt; Dec 1992   9.3036074  -12.639591
-#&gt; Jan 1993  -5.3765056  144.814671
-#&gt; Feb 1993  -4.5242607 -144.275737
-#&gt; Mar 1993  -4.3929097  146.718718
-#&gt; Apr 1993  -6.1622311  -74.329990
-#&gt; May 1993   4.4163455  -30.422384
-#&gt; Jun 1993   4.8259745   33.765806
-#&gt; Jul 1993   5.4214438  -60.750209
-#&gt; Aug 1993 -22.9078465  -29.556027
-#&gt; Sep 1993   3.1035185  -13.453714
-#&gt; Oct 1993  14.0407898   81.478437
-#&gt; Nov 1993  13.7711764  -27.292173
-#&gt; Dec 1993  10.6039565  215.948580
-#&gt; Jan 1994   6.3217289  109.173757
-#&gt; Feb 1994  10.8492804   74.338485
-#&gt; Mar 1994  13.5645944 -120.785935
-#&gt; Apr 1994   3.6242404   32.781805
-#&gt; May 1994  21.6934446  -53.416511
-#&gt; Jun 1994   1.3913051  128.394672
-#&gt; Jul 1994  13.7632653    2.893134
-#&gt; Aug 1994  -4.9144999  -39.567707
-#&gt; Sep 1994  15.3491576  -69.486833
-#&gt; Oct 1994  -4.1619872 -149.208070
-#&gt; Nov 1994  -5.2054380  144.425724
-#&gt; Dec 1994   8.5058387  -34.701739
-#&gt; Jan 1995   3.3449657   -4.025917
-#&gt; Feb 1995  -8.2935177  124.663211
-#&gt; Mar 1995  -2.1869594 -134.630152
-#&gt; Apr 1995 -15.4508372  -57.390128
-#&gt; May 1995   2.3322978  -70.595925
-#&gt; Jun 1995   0.3106964 -185.740454
-#&gt; Jul 1995   3.5786565  -24.697048
-#&gt; Aug 1995  16.0862422  -33.556093
-#&gt; Sep 1995  14.2985426  -24.937687
-#&gt; Oct 1995  -9.4833964   45.952256
-#&gt; Nov 1995  10.1570554  -46.007548
-#&gt; Dec 1995   0.3773461    5.893280
-#&gt; Jan 1996 -17.4423940  -74.259108
-#&gt; Feb 1996  -9.7007381 -216.357400
-#&gt; Mar 1996  -2.2902736  -23.289649
-#&gt; Apr 1996  -9.7484568   87.490683
-#&gt; May 1996  26.9237242  -97.349403
-#&gt; Jun 1996  13.9239386  -51.274686
-#&gt; Jul 1996  13.6007615  -92.348799
-#&gt; Aug 1996  -3.6541588 -149.442573
-#&gt; Sep 1996  -8.6893720  -16.593036
-#&gt; Oct 1996  -5.0655673  158.223832
-#&gt; Nov 1996  12.1470730  101.460227
-#&gt; Dec 1996   5.0695868 -114.647834
-#&gt; Jan 1997 -20.9497131  -90.984911
-#&gt; Feb 1997   0.3407924  310.918268
-#&gt; Mar 1997   8.5272870 -106.955277
-#&gt; Apr 1997   7.4322814  -70.010952
-#&gt; May 1997   5.5715361  -19.844447
-#&gt; Jun 1997 -12.4858322   74.362012
-#&gt; Jul 1997  -2.0787431   -5.015977
-#&gt; Aug 1997   4.2396946  131.314355
-#&gt; Sep 1997  -5.0669744    8.601352
-#&gt; Oct 1997  -6.1152331  -62.985137
-#&gt; Nov 1997  24.1165945   65.507033
-#&gt; Dec 1997  -1.6495814    1.939355
-#&gt; Jan 1998  -4.4040605   69.626996
-#&gt; Feb 1998   5.2197617  200.886989
-#&gt; Mar 1998 -19.1832225   -5.697828
-#&gt; Apr 1998 -19.8264996   24.041550
-#&gt; May 1998   5.2120016   -2.189017
-#&gt; Jun 1998   7.7778320  -83.080816
-#&gt; Jul 1998  -8.1211887  140.247432
-#&gt; Aug 1998   9.1074832  -72.386911
-#&gt; Sep 1998   9.4875395  133.058037
-#&gt; Oct 1998 -13.4804945  -81.133302
-#&gt; Nov 1998   3.5417586  179.503611
-#&gt; Dec 1998   5.3026393   68.662633
-#&gt; Jan 1999  -3.1097493    8.937800
-#&gt; Feb 1999  -2.4415553   32.454774
-#&gt; Mar 1999  -2.9187819    7.131812
-#&gt; Apr 1999 -11.2808616   23.304838
-#&gt; May 1999 -11.2288159  198.637658
-#&gt; Jun 1999  20.5393864  -95.167079
-#&gt; Jul 1999  -9.0951843  -55.864232
-#&gt; Aug 1999   4.5837916   25.581454
-#&gt; Sep 1999  -0.4661845  -19.807617
-#&gt; Oct 1999  -6.8095460   42.878914
-#&gt; Nov 1999 -14.8882940    7.077011
-#&gt; Dec 1999  -3.9251301 -153.665380
-#&gt; Jan 2000 -17.4968202   45.398437
-#&gt; Feb 2000  -0.3866763   87.439857
-#&gt; Mar 2000  -7.9715324 -129.773757
-#&gt; Apr 2000  -9.1592054 -107.896524
-#&gt; May 2000   0.7326746 -113.484994
-#&gt; Jun 2000  12.3817132    2.261431
-#&gt; Jul 2000   7.1837134   -2.146122
-#&gt; Aug 2000   5.3946650  -27.877244
-#&gt; Sep 2000 -10.6123399   -2.420641
-#&gt; Oct 2000  -5.4073787   82.502030
-#&gt; Nov 2000  -7.1520471  -75.018278
-#&gt; Dec 2000  -1.7892009   53.621047
-#&gt; Jan 2001   1.6497028 -157.271748
-#&gt; Feb 2001  -7.2740817  -98.642742
-#&gt; Mar 2001  -5.3783713  198.351232
-#&gt; Apr 2001  -5.9966490 -185.137844
-#&gt; May 2001  11.8208775  -90.978818
-#&gt; Jun 2001   1.8921288 -195.144002
-#&gt; Jul 2001   2.4894911  -80.027646
-#&gt; Aug 2001  10.4664341 -186.936160
-#&gt; Sep 2001 -12.8930094  -75.057148
-#&gt; Oct 2001   3.7511557  -59.093839
-#&gt; Nov 2001  -5.5691839  -74.209927
-#&gt; Dec 2001   3.0242663   69.351208
-#&gt; Jan 2002   2.2226647   -5.946397
-#&gt; Feb 2002  -9.6216696 -186.389510
-#&gt; Mar 2002   0.5203237 -127.450892
-#&gt; Apr 2002   9.0004038 -178.177081
-#&gt; May 2002  -3.9490088  -50.859339
-#&gt; Jun 2002   9.5414600 -173.687829
-#&gt; Jul 2002  -5.8821435    4.048130
-#&gt; Aug 2002 -14.7658453  -12.417946
-#&gt; Sep 2002 -13.7777577  -61.275343
-#&gt; Oct 2002 -13.4567231   16.066248
-#&gt; Nov 2002  -7.3663796  -66.235963
-#&gt; Dec 2002  -4.7011150  -33.485166
-#&gt; Jan 2003  13.8060934   62.301159
-#&gt; Feb 2003  16.7501093  102.819429
-#&gt; Mar 2003  11.7690663 -113.457824
-#&gt; Apr 2003  -1.4889834   91.691105
-#&gt; May 2003  -1.7782336  121.387479
-#&gt; Jun 2003   8.0312186  -68.593246
-#&gt; Jul 2003  -4.1579535 -109.456819
-#&gt; Aug 2003  12.1248959   36.487410
-#&gt; Sep 2003  12.4036003 -100.801708
-#&gt; Oct 2003   6.8567588   55.499644
-#&gt; Nov 2003  -0.2679868   43.606592
-#&gt; Dec 2003   3.0958051   10.537330
-#&gt; Jan 2004   2.4986433  -25.373785
-#&gt; Feb 2004 -13.5646087  -97.649123
-#&gt; Mar 2004   5.9937977   39.421777
-#&gt; Apr 2004   0.0864779  101.490303
-#&gt; May 2004   0.9071661   63.144381
-#&gt; Jun 2004  -6.5705741  -48.339825
-#&gt; Jul 2004  -4.8178225 -152.633394
-#&gt; Aug 2004   0.1775788   61.684228
-#&gt; Sep 2004  -8.5953576  122.928684
-#&gt; Oct 2004  13.5770498   15.745303
-#&gt; Nov 2004  12.1506118  140.634206
-#&gt; Dec 2004  14.5391292   39.680092
-#&gt; Jan 2005  -0.8591198   32.642296
-#&gt; Feb 2005  -6.1756875 -145.934331
-#&gt; Mar 2005  -2.1826025  -79.929553
-#&gt; Apr 2005 -13.2600521   47.001280
-#&gt; May 2005 -23.6220890 -115.018052
-#&gt; Jun 2005 -14.0996955  -27.159672
-#&gt; Jul 2005   2.5439714   45.742422
-#&gt; Aug 2005   2.9587030   -1.695794
-#&gt; Sep 2005   0.5678979  -54.159436
-#&gt; Oct 2005  -1.0265486   87.581342
-#&gt; Nov 2005  19.5192303   74.083815
-#&gt; Dec 2005   8.7856596  -16.481239
-#&gt; Jan 2006 -13.0661693  -75.096428
-#&gt; Feb 2006   0.9034427 -125.336629
-#&gt; Mar 2006   9.0235804 -103.623626
-#&gt; Apr 2006   5.4942132   -2.943857
-#&gt; May 2006  -8.6983920  -27.494378
-#&gt; Jun 2006  -0.3921465   48.545147
-#&gt; Jul 2006  -5.1845168   91.698203
-#&gt; Aug 2006  -9.1184962  -98.534392
-#&gt; Sep 2006   1.5031364 -149.118975
-#&gt; Oct 2006   4.4035545   81.959245
-#&gt; Nov 2006  13.1978206  101.340453
-#&gt; Dec 2006   2.4656113  105.360525
-#&gt; Jan 2007   9.4182660   -7.142864
-#&gt; Feb 2007  -3.4215133   95.244461
-#&gt; Mar 2007  -2.7614681  -38.403752
-#&gt; Apr 2007   3.8365678  -41.775999
-#&gt; May 2007  14.4691022  -47.026817
-#&gt; Jun 2007  17.3390029 -169.018029
-#&gt; Jul 2007   4.5642938  -94.549766
-#&gt; Aug 2007   7.0750349  -34.301196
-#&gt; Sep 2007  20.6378922   35.846241
-#&gt; Oct 2007   0.2391059    4.818886
-#&gt; Nov 2007   2.4594946  113.017228
-#&gt; Dec 2007   2.7205914  -52.763231
-#&gt; Jan 2008  -9.9245858   47.957533
-#&gt; Feb 2008  -0.2757795  141.752930
-#&gt; Mar 2008  22.2284516   -8.009077
-#&gt; Apr 2008   1.5550390  -39.418700
-#&gt; May 2008  -8.6911632   52.525764
-#&gt; Jun 2008 -11.7448945  -79.593510
-#&gt; Jul 2008 -17.5967731   24.509645
-#&gt; Aug 2008   0.5836159  -77.931984
-#&gt; Sep 2008  11.6451986   59.492387
-#&gt; Oct 2008   3.3762789  110.889090
-#&gt; Nov 2008 -10.5451872  -94.296903
-#&gt; Dec 2008   6.6076911   70.034399
-#&gt; Jan 2009  -8.2340900  -42.467483
-#&gt; Feb 2009   4.3703366 -114.313760
-#&gt; Mar 2009   3.7238811   23.344022
-#&gt; Apr 2009 -16.4674913  -18.923658
-#&gt; May 2009 -19.2355227 -166.341126
-#&gt; Jun 2009   3.8083303  191.569077
-#&gt; Jul 2009  13.7570535  -81.689444
-#&gt; Aug 2009   8.2584873   38.365049
-#&gt; Sep 2009  -4.1611500  -45.863225
-#&gt; Oct 2009   9.8214959  -71.570398
-#&gt; Nov 2009   2.4218073   42.954854
-#&gt; Dec 2009  -9.3792685 -116.985274
-#&gt; Jan 2010  15.0585850  132.208831
-#&gt; Feb 2010 -10.6585117  136.596464
-#&gt; Mar 2010   1.6227053  -24.972371
-#&gt; Apr 2010   2.6047039  -42.472135
-#&gt; May 2010 -14.8820199  109.843934
-#&gt; Jun 2010  14.1518387   67.092304
-#&gt; Jul 2010   5.6250751    3.095466
-#&gt; Aug 2010   6.4205574  236.851196
-#&gt; Sep 2010  -8.9053264  258.578811
-#&gt; Oct 2010  -1.1653752  121.228095
-#&gt; Nov 2010  -9.4197475 -125.119684
-#&gt; Dec 2010  11.1582792   40.026604
-#&gt; Jan 2011   4.7013513   93.470763
-#&gt; Feb 2011   8.6061271  -47.266985
-#&gt; Mar 2011  -0.7039665  158.301322
-#&gt; Apr 2011  -6.1318021   59.775422
-#&gt; May 2011  -3.3671496   46.608459
-#&gt; Jun 2011  -2.1584018  -74.436754
-#&gt; Jul 2011   6.2113229   95.905526
-#&gt; Aug 2011 -12.8402652   15.263708
-#&gt; Sep 2011 -13.0009244  -76.936870
-#&gt; Oct 2011  -3.7676946  139.308074
-#&gt; Nov 2011   1.0374865   91.866877
-#&gt; Dec 2011  -7.0356227  101.608706
-#&gt; Jan 2012  14.9741394   53.463544
-#&gt; Feb 2012  -3.0282688  -98.762856
-#&gt; Mar 2012 -13.7683133  118.779227
-#&gt; Apr 2012   8.8317017  -51.754221
-#&gt; May 2012   6.7142028  -25.956025
-#&gt; Jun 2012  12.3002238  -32.806467
-#&gt; Jul 2012  16.4546788    7.343239
-#&gt; Aug 2012  -1.8292604  -24.786302
-#&gt; Sep 2012 -13.7925781 -137.386226
-#&gt; Oct 2012  12.5060060   -4.044582
-#&gt; Nov 2012 -18.7623677   42.153824
-#&gt; Dec 2012  -3.6878757   20.159751
-#&gt; Jan 2013 -21.2929731 -169.719192
-#&gt; Feb 2013   3.3764603   64.228768
-#&gt; Mar 2013 -15.7457485  -99.523961
-#&gt; Apr 2013  -1.9631941   96.381390
-#&gt; May 2013   9.1506011 -165.603723
-#&gt; Jun 2013  10.7863654  107.086109
-#&gt; Jul 2013  14.5280285  -10.902636
-#&gt; Aug 2013 -16.5328109  189.918639
-#&gt; Sep 2013 -27.6186752 -113.703073
-#&gt; Oct 2013   2.6436916  -27.971976
-#&gt; Nov 2013  10.2457159  -89.412905
-#&gt; Dec 2013  -6.5918555   13.670185
-#&gt; Jan 2014  -3.8630438  -74.916542
-#&gt; Feb 2014  -2.4249895   51.819908
-#&gt; Mar 2014   2.2059324  -19.233721
-#&gt; Apr 2014 -14.8109003    2.880981
-#&gt; May 2014   7.2469120   35.859089
-#&gt; Jun 2014 -23.7751470   -2.899503
-#&gt; Jul 2014  -0.6540921  114.704207
-#&gt; Aug 2014  -4.6970481   37.358894
-#&gt; Sep 2014  -2.8051629   32.333921
-#&gt; Oct 2014   5.7483659  -82.981932
-#&gt; Nov 2014  -2.0567685  139.446258
-#&gt; Dec 2014   2.3488051  -19.154358
-#&gt; Jan 2015   1.1062832   27.227702
-#&gt; Feb 2015   2.7420223 -108.165901
-#&gt; Mar 2015  15.7491963 -232.939936
-#&gt; Apr 2015   5.6776783  -54.962596
-#&gt; May 2015  -0.5961225   -7.257999
-#&gt; Jun 2015  -1.4958771  103.228840
-#&gt; Jul 2015   2.6616879   21.513853
-#&gt; Aug 2015   5.2840324  -49.434012
-#&gt; Sep 2015  -5.7938809  151.213828
-#&gt; Oct 2015   9.4219937  -57.946326
-#&gt; Nov 2015  -7.0636136  167.478963
-#&gt; Dec 2015 -12.7540210 -100.098026
-#&gt; Jan 2016   7.3325992  122.270284
-#&gt; Feb 2016  -4.2020709  107.718817
-#&gt; Mar 2016  -2.5537509  -61.194546
-#&gt; Apr 2016  -3.6923822   50.686697
-#&gt; May 2016  12.1244833   46.006837
-#&gt; Jun 2016  -4.4536301  148.439186
-#&gt; Jul 2016  11.3866752   88.196323
-#&gt; Aug 2016   1.9052348  -53.670224
-#&gt; Sep 2016 -13.6639361  128.555371
-#&gt; Oct 2016 -12.9810260   58.784853
-#&gt; Nov 2016 -21.3709831 -130.848203
-#&gt; Dec 2016  -0.9620553   31.672632
-#&gt; Jan 2017   6.9450905  119.415830
-#&gt; Feb 2017  -4.7459123   91.305715
-#&gt; Mar 2017  17.6313061  -78.675299
-#&gt; Apr 2017  20.2584606  -41.092970
-#&gt; May 2017   4.2761881   47.637368
-#&gt; Jun 2017  -5.6647935   18.591587
-#&gt; Jul 2017  -8.3383531 -132.471625
-#&gt; Aug 2017   3.9825915  117.237106
-#&gt; Sep 2017 -14.7453793   23.149277
-#&gt; Oct 2017  -3.9544120   48.307190
-#&gt; Nov 2017  -1.3070247  -53.531958
-#&gt; Dec 2017 -19.9949395  137.813582
-#&gt; Jan 2018  -9.9593086 -130.267167
-#&gt; Feb 2018   4.2011400   63.485754
-#&gt; Mar 2018  -0.6286163   99.965516
-#&gt; Apr 2018  -0.8013185  -33.774895
-#&gt; May 2018  -0.3228341   -8.603361
-#&gt; Jun 2018  -7.1898093 -171.881758
-#&gt; Jul 2018 -11.1656132  -92.912157
-#&gt; Aug 2018  -7.8026990   81.367605
-#&gt; Sep 2018 -17.7695853   52.641355
-#&gt; Oct 2018  -4.2783487  101.195739
-#&gt; Nov 2018 -20.3102701   83.137981
-#&gt; Dec 2018  27.5076475   41.513414
-#&gt; Jan 2019  15.1366972  -66.125706
-#&gt; Feb 2019   0.3398894   54.881129
-#&gt; Mar 2019   7.4079278  -53.936780
-#&gt; Apr 2019 -12.7080818  -17.131843
-#&gt; May 2019  -1.6356423  -76.673461
-#&gt; Jun 2019  -6.1094549  -60.657485
-#&gt; Jul 2019  12.5188419  164.731282
-#&gt; Aug 2019   2.5031947   84.106935
-#&gt; Sep 2019 -17.0558168   33.817510
-#&gt; Oct 2019  -8.5541313  -40.488308
-#&gt; Nov 2019  -1.4490163   90.000904
-#&gt; Dec 2019  -3.2444696  119.066666
-#&gt; Jan 2020  -1.7256490   -4.753908
-#&gt; Feb 2020 -12.3606292   78.692542
-#&gt; Mar 2020 -19.0230421  116.668411
-#&gt; Apr 2020  -0.9450402  -27.182387
-#&gt; May 2020   0.3255579  -31.370428
-#&gt; Jun 2020   4.6129012  -28.630015
-#&gt; Jul 2020  13.8140030  -80.344026
-#&gt; Aug 2020  -4.1647627   -9.455546
-#&gt; Sep 2020   6.8094267   -7.404651
-#&gt; Oct 2020  -4.1437304   71.449068
-#&gt; Nov 2020  -5.1834551   12.471837
-#&gt; Dec 2020  -6.8401973  129.659434
-#&gt; 
-#&gt; $description
-#&gt;           type coeff
-#&gt; var1 Undefined    NA
-#&gt; var2 Undefined    NA
-#&gt; </div><div class='input'><span class='va'>myreg1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>,<span class='va'>myspec1</span><span class='op'>)</span>
-
-<span class='va'>myspec2</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span>spec <span class='op'>=</span> <span class='st'>"TRfull"</span>,
-             usrdef.varEnabled <span class='op'>=</span> <span class='cn'>TRUE</span>,
-             usrdef.var <span class='op'>=</span> <span class='va'>var</span>, usrdef.varCoef <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>17</span>,<span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span>,
-             transform.function <span class='op'>=</span> <span class='st'>"None"</span><span class='op'>)</span>
-<span class='va'>myreg2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>, <span class='va'>myspec2</span><span class='op'>)</span>
-
- <span class='co'># Pre-specified ARMA coefficients</span>
-<span class='va'>myspec1</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span>spec <span class='op'>=</span> <span class='st'>"TRfull"</span>,
-             arima.coefEnabled <span class='op'>=</span> <span class='cn'>TRUE</span>, automdl.enabled <span class='op'>=</span> <span class='cn'>FALSE</span>,
-             arima.p <span class='op'>=</span> <span class='fl'>2</span>, arima.q <span class='op'>=</span> <span class='fl'>0</span>, arima.bp <span class='op'>=</span> <span class='fl'>1</span>, arima.bq <span class='op'>=</span> <span class='fl'>1</span>,
-             arima.coef <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.12</span>, <span class='op'>-</span><span class='fl'>0.12</span>, <span class='op'>-</span><span class='fl'>0.3</span>, <span class='op'>-</span><span class='fl'>0.99</span><span class='op'>)</span>,
-             arima.coefType <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"Fixed"</span>, <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>myreg1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>, <span class='va'>myspec1</span><span class='op'>)</span>
-<span class='va'>myreg1</span>
-</div><div class='output co'>#&gt; y = regression model + arima (2, 1, 0, 1, 1, 1)
-#&gt; Log-transformation: no
-#&gt; Coefficients:
-#&gt;           Estimate Std. Error
-#&gt; Phi(1)       -0.12          0
-#&gt; Phi(2)       -0.12          0
-#&gt; BPhi(1)      -0.30          0
-#&gt; BTheta(1)    -0.99          0
-#&gt; 
-#&gt;                Estimate Std. Error
-#&gt; Mean          -0.007018      0.029
-#&gt; Week days      0.704716      0.029
-#&gt; Leap year      2.163501      0.675
-#&gt; Easter [6]    -2.360603      0.385
-#&gt; TC (4-2020)  -25.280857      2.517
-#&gt; TC (3-2020)  -21.581618      2.569
-#&gt; AO (5-2011)   14.219490      1.749
-#&gt; LS (11-2008)  -6.225300      2.608
-#&gt; 
-#&gt; 
-#&gt; Residual standard error: 2.712 on 350 degrees of freedom
-#&gt; Log likelihood = -882.9, aic =  1784 aicc =  1784, bic(corrected for length) = 2.127
-#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>myreg1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; y = regression model + arima (2, 1, 0, 1, 1, 1)
-#&gt; 
-#&gt; Model: RegARIMA - TRAMO/SEATS
-#&gt; Estimation span: from 1-1990 to 12-2020
-#&gt; Log-transformation: no
-#&gt; Regression model: mean, trading days effect(2), leap year effect, Easter effect, outliers(4)
-#&gt; 
-#&gt; Coefficients:
-#&gt; ARIMA: 
-#&gt;           Estimate Std. Error T-stat Pr(&gt;|t|)
-#&gt; Phi(1)       -0.12       0.00     NA       NA
-#&gt; Phi(2)       -0.12       0.00     NA       NA
-#&gt; BPhi(1)      -0.30       0.00     NA       NA
-#&gt; BTheta(1)    -0.99       0.00     NA       NA
-#&gt; 
-#&gt; Regression model: 
-#&gt;                Estimate Std. Error  T-stat Pr(&gt;|t|)    
-#&gt; Mean          -0.007018   0.028698  -0.245  0.80694    
-#&gt; Week days      0.704716   0.029477  23.907  &lt; 2e-16 ***
-#&gt; Leap year      2.163501   0.675295   3.204  0.00148 ** 
-#&gt; Easter [6]    -2.360603   0.384746  -6.135 2.24e-09 ***
-#&gt; TC (4-2020)  -25.280857   2.517080 -10.044  &lt; 2e-16 ***
-#&gt; TC (3-2020)  -21.581618   2.569059  -8.401 8.88e-16 ***
-#&gt; AO (5-2011)   14.219490   1.748501   8.132 6.88e-15 ***
-#&gt; LS (11-2008)  -6.225300   2.608253  -2.387  0.01751 *  
-#&gt; ---
-#&gt; Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-#&gt; 
-#&gt; 
-#&gt; Residual standard error: 2.712 on 350 degrees of freedom
-#&gt; Log likelihood = -882.9, aic =  1784, aicc =  1784, bic(corrected for length) = 2.127
-#&gt; </div><div class='input'><span class='fu'><a href='specification.html'>s_arimaCoef</a></span><span class='op'>(</span><span class='va'>myspec1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;            Type Value
-#&gt; Phi(1)    Fixed -0.12
-#&gt; Phi(2)    Fixed -0.12
-#&gt; BPhi(1)   Fixed -0.30
-#&gt; BTheta(1) Fixed -0.99</div><div class='input'><span class='fu'><a href='specification.html'>s_arimaCoef</a></span><span class='op'>(</span><span class='va'>myreg1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;            Type Value
-#&gt; Phi(1)    Fixed -0.12
-#&gt; Phi(2)    Fixed -0.12
-#&gt; BPhi(1)   Fixed -0.30
-#&gt; BTheta(1) Fixed -0.99</div><div class='input'><span class='co'># }</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='va'>myseries</span> <span class='op'>&lt;-</span> <span class='va'>ipi_c_eu</span><span class='op'>[</span>, <span class='st'>"FR"</span><span class='op'>]</span></span>
+<span class='r-in'><span class='va'>myspec1</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span>spec <span class='op'>=</span> <span class='st'>"TRfull"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>myreg1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>, spec <span class='op'>=</span> <span class='va'>myspec1</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'> <span class='co'># To modify a pre-specified model specification</span></span>
+<span class='r-in'><span class='va'>myspec2</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span>spec <span class='op'>=</span> <span class='st'>"TRfull"</span>,</span>
+<span class='r-in'>             tradingdays.mauto <span class='op'>=</span> <span class='st'>"Unused"</span>,</span>
+<span class='r-in'>             tradingdays.option <span class='op'>=</span> <span class='st'>"WorkingDays"</span>,</span>
+<span class='r-in'>             easter.type <span class='op'>=</span> <span class='st'>"Standard"</span>,</span>
+<span class='r-in'>             automdl.enabled <span class='op'>=</span> <span class='cn'>FALSE</span>, arima.mu <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>myreg2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>, spec <span class='op'>=</span> <span class='va'>myspec2</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'> <span class='co'># To modify the model specification of a "regarima" object</span></span>
+<span class='r-in'><span class='va'>myspec3</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span><span class='va'>myreg1</span>,</span>
+<span class='r-in'>             tradingdays.mauto <span class='op'>=</span> <span class='st'>"Unused"</span>,</span>
+<span class='r-in'>             tradingdays.option <span class='op'>=</span> <span class='st'>"WorkingDays"</span>,</span>
+<span class='r-in'>             easter.type <span class='op'>=</span> <span class='st'>"Standard"</span>, automdl.enabled <span class='op'>=</span> <span class='cn'>FALSE</span>,</span>
+<span class='r-in'>             arima.mu <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>myreg3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>, <span class='va'>myspec3</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'> <span class='co'># To modify the model specification of a "regarima_spec" object</span></span>
+<span class='r-in'><span class='va'>myspec4</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span><span class='va'>myspec1</span>,</span>
+<span class='r-in'>             tradingdays.mauto <span class='op'>=</span> <span class='st'>"Unused"</span>,</span>
+<span class='r-in'>             tradingdays.option <span class='op'>=</span> <span class='st'>"WorkingDays"</span>,</span>
+<span class='r-in'>             easter.type <span class='op'>=</span> <span class='st'>"Standard"</span>,</span>
+<span class='r-in'>             automdl.enabled <span class='op'>=</span> <span class='cn'>FALSE</span>, arima.mu <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>myreg4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>, <span class='va'>myspec4</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'> <span class='co'># Pre-specified outliers</span></span>
+<span class='r-in'><span class='va'>myspec1</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span>spec <span class='op'>=</span> <span class='st'>"TRfull"</span>,</span>
+<span class='r-in'>             usrdef.outliersEnabled <span class='op'>=</span> <span class='cn'>TRUE</span>,</span>
+<span class='r-in'>             usrdef.outliersType <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"LS"</span>, <span class='st'>"LS"</span><span class='op'>)</span>,</span>
+<span class='r-in'>             usrdef.outliersDate <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"2008-10-01"</span> ,<span class='st'>"2003-01-01"</span><span class='op'>)</span>,</span>
+<span class='r-in'>             usrdef.outliersCoef <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10</span>, <span class='op'>-</span><span class='fl'>8</span><span class='op'>)</span>, transform.function <span class='op'>=</span> <span class='st'>"None"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='specification.html'>s_preOut</a></span><span class='op'>(</span><span class='va'>myspec1</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   type       date coeff</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1   LS 2008-10-01    10</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2   LS 2003-01-01    -8</span>
+<span class='r-in'><span class='va'>myreg1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>, <span class='va'>myspec1</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>myreg1</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> y = regression model + arima (2, 1, 0, 1, 1, 1)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Log-transformation: no</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Coefficients:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           Estimate Std. Error</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Phi(1)      0.4872      0.051</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Phi(2)      0.2964      0.051</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> BPhi(1)    -0.2070      0.071</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> BTheta(1)  -0.8048      0.044</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>              Estimate Std. Error</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Week days      0.6814      0.039</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Leap year      1.9125      0.726</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Easter [6]    -2.4901      0.461</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> TC (4-2020)  -22.4492      2.288</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> TC (3-2020)  -21.2013      2.296</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> AO (5-2011)   12.6414      1.908</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> LS (11-2008) -14.2909      1.954</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Fixed outliers: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>              Coefficients</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> LS (10-2008)           10</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> LS (1-2003)            -8</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Residual standard error: 2.421 on 347 degrees of freedom</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Log likelihood = -831.3, aic =  1687 aicc =  1688, bic(corrected for length) = 1.949</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='fu'><a href='specification.html'>s_preOut</a></span><span class='op'>(</span><span class='va'>myreg1</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   type       date coeff</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1   LS 2008-10-01    10</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2   LS 2003-01-01    -8</span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+<span class='r-in'> <span class='co'># User-defined variables</span></span>
+<span class='r-in'><span class='va'>var1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/ts.html'>ts</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>myseries</span><span class='op'>)</span><span class='op'>)</span><span class='op'>*</span><span class='fl'>10</span>, start <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/start.html'>start</a></span><span class='op'>(</span><span class='va'>myseries</span><span class='op'>)</span>,</span>
+<span class='r-in'>           frequency <span class='op'>=</span> <span class='fl'>12</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>var2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/ts.html'>ts</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>myseries</span><span class='op'>)</span><span class='op'>)</span><span class='op'>*</span><span class='fl'>100</span>, start <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/start.html'>start</a></span><span class='op'>(</span><span class='va'>myseries</span><span class='op'>)</span>,</span>
+<span class='r-in'>           frequency <span class='op'>=</span> <span class='fl'>12</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>var</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/ts.union.html'>ts.union</a></span><span class='op'>(</span><span class='va'>var1</span>, <span class='va'>var2</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>myspec1</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span>spec <span class='op'>=</span> <span class='st'>"TRfull"</span>,</span>
+<span class='r-in'>            usrdef.varEnabled <span class='op'>=</span> <span class='cn'>TRUE</span>, usrdef.var <span class='op'>=</span> <span class='va'>var</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='specification.html'>s_preVar</a></span><span class='op'>(</span><span class='va'>myspec1</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $series</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                 var1        var2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 1990 -10.3377324  -88.564860</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 1990  -1.5597667    4.923707</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 1990  -0.4640064   18.556122</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 1990  -9.5362873  -60.865779</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 1990   4.1626080  -73.110285</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 1990   1.1402961  271.514421</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 1990   0.6391875 -133.938704</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 1990  -9.1933224  -64.601525</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 1990   9.0133529  -93.245461</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 1990  -7.9772830  -76.908693</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 1990   6.6822120   37.157978</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 1990   1.5521430   35.543278</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 1991   1.2868809  -98.399849</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 1991 -15.3306545   21.472959</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 1991   2.0236067   -8.008508</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 1991  -7.1753865 -142.236955</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 1991   3.6169476  110.814896</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 1991  13.9900429  107.847764</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 1991   3.7269896  -44.025034</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 1991 -15.6564429  -77.816901</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 1991  -0.5169454 -181.859001</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 1991   5.1408210 -112.408090</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 1991   5.4989952  106.052384</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 1991   8.6781691 -147.870016</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 1992   6.8436008 -155.156017</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 1992  -1.6267998   77.750668</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 1992 -17.8436472  106.844014</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 1992 -10.3714557  -18.358770</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 1992   8.3014772  155.824293</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 1992   6.0734694  -21.324238</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 1992  -1.2218636   93.053526</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 1992   9.3312514   41.081180</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 1992  -9.6127668 -127.984430</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 1992   2.5508171  -78.236663</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 1992  -5.4540157 -227.608345</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 1992   9.3036074  -12.639591</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 1993  -5.3765056  144.814671</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 1993  -4.5242607 -144.275737</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 1993  -4.3929097  146.718718</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 1993  -6.1622311  -74.329990</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 1993   4.4163455  -30.422384</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 1993   4.8259745   33.765806</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 1993   5.4214438  -60.750209</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 1993 -22.9078465  -29.556027</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 1993   3.1035185  -13.453714</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 1993  14.0407898   81.478437</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 1993  13.7711764  -27.292173</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 1993  10.6039565  215.948580</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 1994   6.3217289  109.173757</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 1994  10.8492804   74.338485</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 1994  13.5645944 -120.785935</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 1994   3.6242404   32.781805</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 1994  21.6934446  -53.416511</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 1994   1.3913051  128.394672</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 1994  13.7632653    2.893134</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 1994  -4.9144999  -39.567707</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 1994  15.3491576  -69.486833</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 1994  -4.1619872 -149.208070</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 1994  -5.2054380  144.425724</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 1994   8.5058387  -34.701739</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 1995   3.3449657   -4.025917</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 1995  -8.2935177  124.663211</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 1995  -2.1869594 -134.630152</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 1995 -15.4508372  -57.390128</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 1995   2.3322978  -70.595925</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 1995   0.3106964 -185.740454</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 1995   3.5786565  -24.697048</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 1995  16.0862422  -33.556093</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 1995  14.2985426  -24.937687</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 1995  -9.4833964   45.952256</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 1995  10.1570554  -46.007548</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 1995   0.3773461    5.893280</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 1996 -17.4423940  -74.259108</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 1996  -9.7007381 -216.357400</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 1996  -2.2902736  -23.289649</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 1996  -9.7484568   87.490683</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 1996  26.9237242  -97.349403</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 1996  13.9239386  -51.274686</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 1996  13.6007615  -92.348799</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 1996  -3.6541588 -149.442573</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 1996  -8.6893720  -16.593036</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 1996  -5.0655673  158.223832</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 1996  12.1470730  101.460227</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 1996   5.0695868 -114.647834</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 1997 -20.9497131  -90.984911</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 1997   0.3407924  310.918268</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 1997   8.5272870 -106.955277</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 1997   7.4322814  -70.010952</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 1997   5.5715361  -19.844447</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 1997 -12.4858322   74.362012</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 1997  -2.0787431   -5.015977</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 1997   4.2396946  131.314355</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 1997  -5.0669744    8.601352</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 1997  -6.1152331  -62.985137</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 1997  24.1165945   65.507033</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 1997  -1.6495814    1.939355</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 1998  -4.4040605   69.626996</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 1998   5.2197617  200.886989</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 1998 -19.1832225   -5.697828</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 1998 -19.8264996   24.041550</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 1998   5.2120016   -2.189017</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 1998   7.7778320  -83.080816</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 1998  -8.1211887  140.247432</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 1998   9.1074832  -72.386911</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 1998   9.4875395  133.058037</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 1998 -13.4804945  -81.133302</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 1998   3.5417586  179.503611</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 1998   5.3026393   68.662633</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 1999  -3.1097493    8.937800</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 1999  -2.4415553   32.454774</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 1999  -2.9187819    7.131812</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 1999 -11.2808616   23.304838</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 1999 -11.2288159  198.637658</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 1999  20.5393864  -95.167079</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 1999  -9.0951843  -55.864232</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 1999   4.5837916   25.581454</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 1999  -0.4661845  -19.807617</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 1999  -6.8095460   42.878914</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 1999 -14.8882940    7.077011</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 1999  -3.9251301 -153.665380</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2000 -17.4968202   45.398437</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2000  -0.3866763   87.439857</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2000  -7.9715324 -129.773757</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2000  -9.1592054 -107.896524</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2000   0.7326746 -113.484994</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2000  12.3817132    2.261431</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2000   7.1837134   -2.146122</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2000   5.3946650  -27.877244</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2000 -10.6123399   -2.420641</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2000  -5.4073787   82.502030</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2000  -7.1520471  -75.018278</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2000  -1.7892009   53.621047</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2001   1.6497028 -157.271748</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2001  -7.2740817  -98.642742</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2001  -5.3783713  198.351232</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2001  -5.9966490 -185.137844</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2001  11.8208775  -90.978818</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2001   1.8921288 -195.144002</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2001   2.4894911  -80.027646</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2001  10.4664341 -186.936160</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2001 -12.8930094  -75.057148</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2001   3.7511557  -59.093839</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2001  -5.5691839  -74.209927</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2001   3.0242663   69.351208</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2002   2.2226647   -5.946397</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2002  -9.6216696 -186.389510</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2002   0.5203237 -127.450892</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2002   9.0004038 -178.177081</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2002  -3.9490088  -50.859339</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2002   9.5414600 -173.687829</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2002  -5.8821435    4.048130</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2002 -14.7658453  -12.417946</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2002 -13.7777577  -61.275343</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2002 -13.4567231   16.066248</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2002  -7.3663796  -66.235963</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2002  -4.7011150  -33.485166</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2003  13.8060934   62.301159</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2003  16.7501093  102.819429</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2003  11.7690663 -113.457824</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2003  -1.4889834   91.691105</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2003  -1.7782336  121.387479</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2003   8.0312186  -68.593246</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2003  -4.1579535 -109.456819</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2003  12.1248959   36.487410</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2003  12.4036003 -100.801708</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2003   6.8567588   55.499644</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2003  -0.2679868   43.606592</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2003   3.0958051   10.537330</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2004   2.4986433  -25.373785</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2004 -13.5646087  -97.649123</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2004   5.9937977   39.421777</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2004   0.0864779  101.490303</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2004   0.9071661   63.144381</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2004  -6.5705741  -48.339825</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2004  -4.8178225 -152.633394</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2004   0.1775788   61.684228</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2004  -8.5953576  122.928684</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2004  13.5770498   15.745303</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2004  12.1506118  140.634206</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2004  14.5391292   39.680092</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2005  -0.8591198   32.642296</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2005  -6.1756875 -145.934331</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2005  -2.1826025  -79.929553</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2005 -13.2600521   47.001280</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2005 -23.6220890 -115.018052</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2005 -14.0996955  -27.159672</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2005   2.5439714   45.742422</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2005   2.9587030   -1.695794</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2005   0.5678979  -54.159436</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2005  -1.0265486   87.581342</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2005  19.5192303   74.083815</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2005   8.7856596  -16.481239</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2006 -13.0661693  -75.096428</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2006   0.9034427 -125.336629</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2006   9.0235804 -103.623626</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2006   5.4942132   -2.943857</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2006  -8.6983920  -27.494378</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2006  -0.3921465   48.545147</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2006  -5.1845168   91.698203</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2006  -9.1184962  -98.534392</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2006   1.5031364 -149.118975</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2006   4.4035545   81.959245</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2006  13.1978206  101.340453</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2006   2.4656113  105.360525</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2007   9.4182660   -7.142864</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2007  -3.4215133   95.244461</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2007  -2.7614681  -38.403752</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2007   3.8365678  -41.775999</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2007  14.4691022  -47.026817</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2007  17.3390029 -169.018029</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2007   4.5642938  -94.549766</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2007   7.0750349  -34.301196</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2007  20.6378922   35.846241</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2007   0.2391059    4.818886</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2007   2.4594946  113.017228</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2007   2.7205914  -52.763231</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2008  -9.9245858   47.957533</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2008  -0.2757795  141.752930</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2008  22.2284516   -8.009077</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2008   1.5550390  -39.418700</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2008  -8.6911632   52.525764</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2008 -11.7448945  -79.593510</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2008 -17.5967731   24.509645</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2008   0.5836159  -77.931984</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2008  11.6451986   59.492387</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2008   3.3762789  110.889090</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2008 -10.5451872  -94.296903</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2008   6.6076911   70.034399</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2009  -8.2340900  -42.467483</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2009   4.3703366 -114.313760</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2009   3.7238811   23.344022</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2009 -16.4674913  -18.923658</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2009 -19.2355227 -166.341126</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2009   3.8083303  191.569077</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2009  13.7570535  -81.689444</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2009   8.2584873   38.365049</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2009  -4.1611500  -45.863225</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2009   9.8214959  -71.570398</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2009   2.4218073   42.954854</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2009  -9.3792685 -116.985274</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2010  15.0585850  132.208831</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2010 -10.6585117  136.596464</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2010   1.6227053  -24.972371</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2010   2.6047039  -42.472135</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2010 -14.8820199  109.843934</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2010  14.1518387   67.092304</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2010   5.6250751    3.095466</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2010   6.4205574  236.851196</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2010  -8.9053264  258.578811</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2010  -1.1653752  121.228095</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2010  -9.4197475 -125.119684</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2010  11.1582792   40.026604</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2011   4.7013513   93.470763</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2011   8.6061271  -47.266985</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2011  -0.7039665  158.301322</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2011  -6.1318021   59.775422</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2011  -3.3671496   46.608459</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2011  -2.1584018  -74.436754</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2011   6.2113229   95.905526</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2011 -12.8402652   15.263708</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2011 -13.0009244  -76.936870</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2011  -3.7676946  139.308074</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2011   1.0374865   91.866877</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2011  -7.0356227  101.608706</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2012  14.9741394   53.463544</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2012  -3.0282688  -98.762856</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2012 -13.7683133  118.779227</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2012   8.8317017  -51.754221</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2012   6.7142028  -25.956025</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2012  12.3002238  -32.806467</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2012  16.4546788    7.343239</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2012  -1.8292604  -24.786302</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2012 -13.7925781 -137.386226</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2012  12.5060060   -4.044582</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2012 -18.7623677   42.153824</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2012  -3.6878757   20.159751</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2013 -21.2929731 -169.719192</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2013   3.3764603   64.228768</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2013 -15.7457485  -99.523961</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2013  -1.9631941   96.381390</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2013   9.1506011 -165.603723</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2013  10.7863654  107.086109</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2013  14.5280285  -10.902636</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2013 -16.5328109  189.918639</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2013 -27.6186752 -113.703073</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2013   2.6436916  -27.971976</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2013  10.2457159  -89.412905</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2013  -6.5918555   13.670185</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2014  -3.8630438  -74.916542</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2014  -2.4249895   51.819908</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2014   2.2059324  -19.233721</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2014 -14.8109003    2.880981</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2014   7.2469120   35.859089</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2014 -23.7751470   -2.899503</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2014  -0.6540921  114.704207</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2014  -4.6970481   37.358894</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2014  -2.8051629   32.333921</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2014   5.7483659  -82.981932</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2014  -2.0567685  139.446258</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2014   2.3488051  -19.154358</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2015   1.1062832   27.227702</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2015   2.7420223 -108.165901</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2015  15.7491963 -232.939936</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2015   5.6776783  -54.962596</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2015  -0.5961225   -7.257999</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2015  -1.4958771  103.228840</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2015   2.6616879   21.513853</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2015   5.2840324  -49.434012</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2015  -5.7938809  151.213828</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2015   9.4219937  -57.946326</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2015  -7.0636136  167.478963</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2015 -12.7540210 -100.098026</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2016   7.3325992  122.270284</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2016  -4.2020709  107.718817</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2016  -2.5537509  -61.194546</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2016  -3.6923822   50.686697</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2016  12.1244833   46.006837</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2016  -4.4536301  148.439186</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2016  11.3866752   88.196323</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2016   1.9052348  -53.670224</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2016 -13.6639361  128.555371</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2016 -12.9810260   58.784853</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2016 -21.3709831 -130.848203</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2016  -0.9620553   31.672632</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2017   6.9450905  119.415830</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2017  -4.7459123   91.305715</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2017  17.6313061  -78.675299</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2017  20.2584606  -41.092970</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2017   4.2761881   47.637368</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2017  -5.6647935   18.591587</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2017  -8.3383531 -132.471625</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2017   3.9825915  117.237106</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2017 -14.7453793   23.149277</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2017  -3.9544120   48.307190</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2017  -1.3070247  -53.531958</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2017 -19.9949395  137.813582</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2018  -9.9593086 -130.267167</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2018   4.2011400   63.485754</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2018  -0.6286163   99.965516</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2018  -0.8013185  -33.774895</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2018  -0.3228341   -8.603361</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2018  -7.1898093 -171.881758</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2018 -11.1656132  -92.912157</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2018  -7.8026990   81.367605</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2018 -17.7695853   52.641355</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2018  -4.2783487  101.195739</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2018 -20.3102701   83.137981</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2018  27.5076475   41.513414</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2019  15.1366972  -66.125706</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2019   0.3398894   54.881129</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2019   7.4079278  -53.936780</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2019 -12.7080818  -17.131843</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2019  -1.6356423  -76.673461</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2019  -6.1094549  -60.657485</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2019  12.5188419  164.731282</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2019   2.5031947   84.106935</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2019 -17.0558168   33.817510</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2019  -8.5541313  -40.488308</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2019  -1.4490163   90.000904</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2019  -3.2444696  119.066666</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jan 2020  -1.7256490   -4.753908</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Feb 2020 -12.3606292   78.692542</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mar 2020 -19.0230421  116.668411</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Apr 2020  -0.9450402  -27.182387</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> May 2020   0.3255579  -31.370428</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jun 2020   4.6129012  -28.630015</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Jul 2020  13.8140030  -80.344026</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Aug 2020  -4.1647627   -9.455546</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sep 2020   6.8094267   -7.404651</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Oct 2020  -4.1437304   71.449068</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Nov 2020  -5.1834551   12.471837</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dec 2020  -6.8401973  129.659434</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $description</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           type coeff</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> var1 Undefined    NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> var2 Undefined    NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='va'>myreg1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>,<span class='va'>myspec1</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>myspec2</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span>spec <span class='op'>=</span> <span class='st'>"TRfull"</span>,</span>
+<span class='r-in'>             usrdef.varEnabled <span class='op'>=</span> <span class='cn'>TRUE</span>,</span>
+<span class='r-in'>             usrdef.var <span class='op'>=</span> <span class='va'>var</span>, usrdef.varCoef <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>17</span>,<span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span>,</span>
+<span class='r-in'>             transform.function <span class='op'>=</span> <span class='st'>"None"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>myreg2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>, <span class='va'>myspec2</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'> <span class='co'># Pre-specified ARMA coefficients</span></span>
+<span class='r-in'><span class='va'>myspec1</span> <span class='op'>&lt;-</span> <span class='fu'>regarima_spec_tramoseats</span><span class='op'>(</span>spec <span class='op'>=</span> <span class='st'>"TRfull"</span>,</span>
+<span class='r-in'>             arima.coefEnabled <span class='op'>=</span> <span class='cn'>TRUE</span>, automdl.enabled <span class='op'>=</span> <span class='cn'>FALSE</span>,</span>
+<span class='r-in'>             arima.p <span class='op'>=</span> <span class='fl'>2</span>, arima.q <span class='op'>=</span> <span class='fl'>0</span>, arima.bp <span class='op'>=</span> <span class='fl'>1</span>, arima.bq <span class='op'>=</span> <span class='fl'>1</span>,</span>
+<span class='r-in'>             arima.coef <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.12</span>, <span class='op'>-</span><span class='fl'>0.12</span>, <span class='op'>-</span><span class='fl'>0.3</span>, <span class='op'>-</span><span class='fl'>0.99</span><span class='op'>)</span>,</span>
+<span class='r-in'>             arima.coefType <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"Fixed"</span>, <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>myreg1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regarima.html'>regarima</a></span><span class='op'>(</span><span class='va'>myseries</span>, <span class='va'>myspec1</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>myreg1</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> y = regression model + arima (2, 1, 0, 1, 1, 1)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Log-transformation: no</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Coefficients:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           Estimate Std. Error</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Phi(1)       -0.12          0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Phi(2)       -0.12          0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> BPhi(1)      -0.30          0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> BTheta(1)    -0.99          0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                Estimate Std. Error</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mean          -0.007018      0.029</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Week days      0.704716      0.029</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Leap year      2.163501      0.675</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Easter [6]    -2.360603      0.385</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> TC (4-2020)  -25.280857      2.517</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> TC (3-2020)  -21.581618      2.569</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> AO (5-2011)   14.219490      1.749</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> LS (11-2008)  -6.225300      2.608</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Residual standard error: 2.712 on 350 degrees of freedom</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Log likelihood = -882.9, aic =  1784 aicc =  1784, bic(corrected for length) = 2.127</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>myreg1</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> y = regression model + arima (2, 1, 0, 1, 1, 1)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Model: RegARIMA - TRAMO/SEATS</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Estimation span: from 1-1990 to 12-2020</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Log-transformation: no</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Regression model: mean, trading days effect(2), leap year effect, Easter effect, outliers(4)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Coefficients:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ARIMA: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           Estimate Std. Error T-stat Pr(&gt;|t|)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Phi(1)       -0.12       0.00     NA       NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Phi(2)       -0.12       0.00     NA       NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> BPhi(1)      -0.30       0.00     NA       NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> BTheta(1)    -0.99       0.00     NA       NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Regression model: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                Estimate Std. Error  T-stat Pr(&gt;|t|)    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Mean          -0.007018   0.028698  -0.245  0.80694    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Week days      0.704716   0.029477  23.907  &lt; 2e-16 ***</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Leap year      2.163501   0.675295   3.204  0.00148 ** </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Easter [6]    -2.360603   0.384746  -6.135 2.24e-09 ***</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> TC (4-2020)  -25.280857   2.517080 -10.044  &lt; 2e-16 ***</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> TC (3-2020)  -21.581618   2.569059  -8.401 8.88e-16 ***</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> AO (5-2011)   14.219490   1.748501   8.132 6.88e-15 ***</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> LS (11-2008)  -6.225300   2.608253  -2.387  0.01751 *  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ---</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Residual standard error: 2.712 on 350 degrees of freedom</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Log likelihood = -882.9, aic =  1784, aicc =  1784, bic(corrected for length) = 2.127</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='fu'><a href='specification.html'>s_arimaCoef</a></span><span class='op'>(</span><span class='va'>myspec1</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>            Type Value</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Phi(1)    Fixed -0.12</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Phi(2)    Fixed -0.12</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> BPhi(1)   Fixed -0.30</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> BTheta(1) Fixed -0.99</span>
+<span class='r-in'><span class='fu'><a href='specification.html'>s_arimaCoef</a></span><span class='op'>(</span><span class='va'>myreg1</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>            Type Value</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Phi(1)    Fixed -0.12</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Phi(2)    Fixed -0.12</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> BPhi(1)   Fixed -0.30</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> BTheta(1) Fixed -0.99</span>
+<span class='r-in'><span class='co'># }</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

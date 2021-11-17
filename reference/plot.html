@@ -84,7 +84,7 @@ The function plot.SA just calls the function plot.final." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RJDemetra</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -110,13 +110,19 @@ The function plot.SA just calls the function plot.final." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="https://github.com/AQLT/rjwsacruncher">rjwsacruncher</a>
+    </li>
+    <li>
       <a href="https://github.com/AQLT/ggdemetra">ggdemetra</a>
     </li>
     <li>
       <a href="https://github.com/AQLT/rjdqa">rjdqa</a>
     </li>
     <li>
-      <a href="https://github.com/AQLT/rjwsacruncher">rjwsacruncher</a>
+      <a href="https://github.com/AQLT/rjdmarkdown">rjdmarkdown</a>
+    </li>
+    <li>
+      <a href="https://github.com/InseeFrLab/rjdworkspace">rjdworkspace</a>
     </li>
   </ul>
 </li>
@@ -252,27 +258,40 @@ The function <code>plot.SA</code> just calls the function <code>plot.final</code
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='va'>myseries</span> <span class='op'>&lt;-</span> <span class='va'>ipi_c_eu</span><span class='op'>[</span>, <span class='st'>"FR"</span><span class='op'>]</span>
-<span class='va'>mysa</span> <span class='op'>&lt;-</span> <span class='fu'><a href='x13.html'>x13</a></span><span class='op'>(</span><span class='va'>myseries</span>, spec <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"RSA5c"</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='co'># RegArima</span>
-<span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>regarima</span><span class='op'>)</span> <span class='co'># 6 graphics are plotted by default</span>
-</div><div class='img'><img src='plot-1.png' alt='' width='700' height='433' /></div><div class='img'><img src='plot-2.png' alt='' width='700' height='433' /></div><div class='img'><img src='plot-3.png' alt='' width='700' height='433' /></div><div class='img'><img src='plot-4.png' alt='' width='700' height='433' /></div><div class='img'><img src='plot-5.png' alt='' width='700' height='433' /></div><div class='img'><img src='plot-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># To plot only one graphic (here, the residuals) and change the title:</span>
-<span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>regarima</span>, which <span class='op'>=</span> <span class='fl'>1</span>, caption <span class='op'>=</span> <span class='st'>"Plot of residuals"</span><span class='op'>)</span>
-</div><div class='img'><img src='plot-7.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>regarima</span>, which <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span>
-</div><div class='img'><img src='plot-8.png' alt='' width='700' height='433' /></div><div class='input'>
-  <span class='co'># Decomposition</span>
-<span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>decomposition</span><span class='op'>)</span> <span class='co'># To plot the S-I ratio</span>
-</div><div class='img'><img src='plot-9.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>decomposition</span>, first_date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2010</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># To start the plot in January 2010</span>
-</div><div class='img'><img src='plot-10.png' alt='' width='700' height='433' /></div><div class='input'>
-  <span class='co'># Final</span>
-<span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>final</span><span class='op'>)</span> <span class='co'># 2 graphics are plotted by default</span>
-</div><div class='img'><img src='plot-11.png' alt='' width='700' height='433' /></div><div class='img'><img src='plot-12.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># To only plot one graphic (here the raw data, the seasonally adjusted data and the trend),</span>
-<span class='co'># To change the last date and the title</span>
-<span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>final</span>, last_date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2000</span>, <span class='fl'>1</span><span class='op'>)</span>,
-     caption <span class='op'>=</span> <span class='st'>"Results"</span>, type_chart <span class='op'>=</span> <span class='st'>"sa-trend"</span><span class='op'>)</span>
-</div><div class='img'><img src='plot-13.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># }</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='va'>myseries</span> <span class='op'>&lt;-</span> <span class='va'>ipi_c_eu</span><span class='op'>[</span>, <span class='st'>"FR"</span><span class='op'>]</span></span>
+<span class='r-in'><span class='va'>mysa</span> <span class='op'>&lt;-</span> <span class='fu'><a href='x13.html'>x13</a></span><span class='op'>(</span><span class='va'>myseries</span>, spec <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"RSA5c"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='co'># RegArima</span></span>
+<span class='r-in'><span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>regarima</span><span class='op'>)</span> <span class='co'># 6 graphics are plotted by default</span></span>
+<span class='r-plt img'><img src='plot-1.png' alt='' width='700' height='433' /></span>
+<span class='r-plt img'><img src='plot-2.png' alt='' width='700' height='433' /></span>
+<span class='r-plt img'><img src='plot-3.png' alt='' width='700' height='433' /></span>
+<span class='r-plt img'><img src='plot-4.png' alt='' width='700' height='433' /></span>
+<span class='r-plt img'><img src='plot-5.png' alt='' width='700' height='433' /></span>
+<span class='r-plt img'><img src='plot-6.png' alt='' width='700' height='433' /></span>
+<span class='r-in'><span class='co'># To plot only one graphic (here, the residuals) and change the title:</span></span>
+<span class='r-in'><span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>regarima</span>, which <span class='op'>=</span> <span class='fl'>1</span>, caption <span class='op'>=</span> <span class='st'>"Plot of residuals"</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='plot-7.png' alt='' width='700' height='433' /></span>
+<span class='r-in'><span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>regarima</span>, which <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='plot-8.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='co'># Decomposition</span></span>
+<span class='r-in'><span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>decomposition</span><span class='op'>)</span> <span class='co'># To plot the S-I ratio</span></span>
+<span class='r-plt img'><img src='plot-9.png' alt='' width='700' height='433' /></span>
+<span class='r-in'><span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>decomposition</span>, first_date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2010</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># To start the plot in January 2010</span></span>
+<span class='r-plt img'><img src='plot-10.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='co'># Final</span></span>
+<span class='r-in'><span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>final</span><span class='op'>)</span> <span class='co'># 2 graphics are plotted by default</span></span>
+<span class='r-plt img'><img src='plot-11.png' alt='' width='700' height='433' /></span>
+<span class='r-plt img'><img src='plot-12.png' alt='' width='700' height='433' /></span>
+<span class='r-in'><span class='co'># To only plot one graphic (here the raw data, the seasonally adjusted data and the trend),</span></span>
+<span class='r-in'><span class='co'># To change the last date and the title</span></span>
+<span class='r-in'><span class='fu'>plot</span><span class='op'>(</span><span class='va'>mysa</span><span class='op'>$</span><span class='va'>final</span>, last_date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2000</span>, <span class='fl'>1</span><span class='op'>)</span>,</span>
+<span class='r-in'>     caption <span class='op'>=</span> <span class='st'>"Results"</span>, type_chart <span class='op'>=</span> <span class='st'>"sa-trend"</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='plot-13.png' alt='' width='700' height='433' /></span>
+<span class='r-in'><span class='co'># }</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
